@@ -6,4 +6,4 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static(__dirname + "/../public"));
 
-app.listen(process.env.PORT || 8081, () => console.log("Server is running..."));
+app.listen(8082, () => console.log("Server is running..."));
