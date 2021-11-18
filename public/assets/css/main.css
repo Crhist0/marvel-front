@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
 body {
-  background-color: black;
+  background: black url(../img/gCWHKN.gif) no-repeat center;
+  background-size: cover;
+
+  background-attachment: fixed;
 }
 
 #logo {
@@ -76,7 +79,7 @@ body {
   width: 1000px;
   height: 5px;
   left: 500px;
-  top: 815px;
+  top: 746px;
 
   border: 2px solid rgba(160, 160, 157, 0.35);
   border-radius: 0.1rem;
