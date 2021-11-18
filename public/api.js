@@ -12,14 +12,14 @@ function listaPersonagens() {
         params: { page, name },
     })
         .then((result) => {
-            console.log(result.data);
+            // console.log(result.data);
 
             const lista = result.data.data;
             const searchResults = result.data.searchResults;
-            // const detailsPageResults = result.data.detailsPageResults;
+            const detailsPageResults = result.data.detailsPageResults;
             const copy = result.data.copy;
 
-            atualizaTabela(lista, copy, searchResults);
+            atualizaTabela(lista, copy, searchResults, detailsPageResults);
         })
         .catch((err) => {
             console.log("erro?");
@@ -29,11 +29,11 @@ function listaPersonagens() {
         });
 }
 
-function atualizaTabela(lista, copy, searchResults) {
+function atualizaTabela(lista, copy, searchResults, detailsPageResults) {
     let list = document.querySelector("#listaPersonagens");
     list.style.display = "block";
     const tbodyLista = document.querySelector("#listaPersonagens > tbody");
-
+    console.log(detailsPageResults);
     tbodyLista.innerHTML = "";
 
     for (const personagem of lista) {
@@ -69,7 +69,7 @@ function atualizaTabela(lista, copy, searchResults) {
 
         `;
     }
-    console.log(searchResults);
+    // console.log(searchResults);
 
     document.getElementById("footer").innerHTML = copy;
 }
