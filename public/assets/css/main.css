@@ -2,6 +2,7 @@ body {
     background-color: black;
 }
 
+
 #logo {
     margin-top: 20vh;
 }
@@ -47,10 +48,9 @@ body {
 
 #search {
     height: 100vh;
-    background-image: url(./image.jpg);
+    background-image: url(../img/image.jpg);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: auto 100%;
 }
 
 #fade {
@@ -60,4 +60,9 @@ body {
     /* background-color: white; */
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 20%, black 100%);
     /* background; */
+}
+
+.title-heroes h5 {
+    text-transform: uppercase;
+    color: #fff;
 }
