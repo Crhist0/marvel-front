@@ -1,5 +1,5 @@
 const api = axios.create({
-    baseURL: "http://localhost:8081/",
+    baseURL: "https://api-backend-marvel-crhist0.herokuapp.com",
 });
 
 const params = new URLSearchParams(window.location.search);
