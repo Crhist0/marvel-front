@@ -1,0 +1,63 @@
+body {
+    background-color: black;
+}
+
+#logo {
+    margin-top: 20vh;
+}
+
+#searchInput {
+    width: 50vw;
+}
+
+.btn-outline-secondary {
+    background-color: #FFFFFF;
+    color: #CED4DA;
+    border-color: #CED4DA
+}
+
+.btn-outline-secondary:hover {
+    background-color: #FFFFFF;
+    border-color: #CED4DA
+}
+
+.btn-outline-secondary:focus {
+    box-shadow: 0 0 2rem .25rem #ADB5BD
+}
+
+.btn {
+    margin-left: -50px;
+    border-radius: 00px 300px 300px 00px;
+    border-left: none
+}
+
+
+.form-control {
+    border-radius: 300px;
+    border-right: none
+}
+
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #ADB5BD;
+    outline: 0;
+    box-shadow: 0 0 2rem .25rem #ADB5BD;
+}
+
+#search {
+    height: 100vh;
+    background-image: url(./image.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+}
+
+#fade {
+    height: 140px;
+    margin-top: -140px;
+    width: 100%;
+    /* background-color: white; */
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 20%, black 100%);
+    /* background; */
+}
