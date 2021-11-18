@@ -6,15 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marvel</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/carousel.css">
+
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 mb-4">
+            <div class="col-12">
                 <div id="search" class="d-flex flex-column align-items-center">
                     <a href="./main.html">
                         <img id="logo" width="250px" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Marvel_Logo.svg"
@@ -23,8 +26,9 @@
                     <div id="searchInput" class="input-group mb-3  mt-3">
                         <input type="text" class="form-control" placeholder="Search by name..." aria-label="Recipient's username"
                             aria-describedby="basic-addon2">
-                        <button class="btn btn-outline-secondary" id="basic-addon2"><img
-                                src="https://img.icons8.com/material-outlined/24/000000/search--v1.png" /></button>
+                        <button class="btn btn-outline-secondary" id="basic-addon2">
+                            <img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png" />
+                        </button>
                     </div>
                 </div>
                 <div class="d-flex flex-column align-items-center" id="fade">
@@ -32,51 +36,133 @@
             
                 </div>
             </div>
-
-            <div class="col-12 mb-4">
-                <div class="title-heroes">
-                    <h5>Popular Heroes</h5>
-                </div>
-                
-            </div>
-
-            <div class="col-12">
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <img src="..." class="d-block w-100" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="..." class="d-block w-100" alt="...">
-                      </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
-                    </button>
-                  </div>
-            </div>
         </div>
 
+        <div class="row adjust-pd">
+            <!-- ########################### HERÓIS ############################################################ -->
+            <div class="col-12 mt-5 mb-5">
+                <div class="title-group">
+                    <span>Popular Heroes</span>
+                </div>
+            </div>
+
+            <!-- CARROSSEL DE HERÓIS INÍCIO -->
+            <div class="col-12">
+                <div class="wrapper">
+                    <section id="section1">
+                        <a href="#section2" class="arrow__btn"><span>‹</span></a>
+                        <div class="item">
+                            <a href="">
+                                <img src="assets/img/capitao-america.png" alt="">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="">
+                                <img src="assets/img/homem-aranha.png" alt="">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="">
+                                <img src="assets/img/homem-de-ferro.png" alt="">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="">
+                                <img src="assets/img/viuva-negra.png" alt="">
+                            </a>
+                        </div>
+                        <a href="#section2" class="arrow__btn"><span>›</span></a>
+                    </section>
+                    <section id="section2">
+                        <a href="#section1" class="arrow__btn"><span>‹</span></a>
+                        <div class="item">
+                            <a href="">
+                                <img src="assets/img/feiticeira.png" alt="">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="">
+                                <img src="assets/img/thor.png" alt="">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="">
+                                <img src="assets/img/hulk.png" alt="">
+                            </a>
+                        </div>
+                        <a href="#section1" class="arrow__btn"><span>›</span></a>
+                    </section>
+                </div>
+            </div>
+            <!-- CARROSSEL DE HERÓIS FINAL -->
+
+
+
+            <!-- ########################### VILÕES ############################################################ -->
+            <div class="col-12 mt-5 mb-5">
+                <span class="title-group">
+                    Popular Villains
+                </span>
+            </div>
+
+            <!-- CARROSSEL DE VILÕES INÍCIO -->
+            <div class="col-12">
+                <div class="wrapper">
+                    <section id="section4">
+                        <a href="#section6" class="arrow__btn"><span>‹</span></a>
+                        <div class="item">
+                            <a href="">
+                                <img src="assets/img/loki.png" alt="">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="">
+                                <img src="assets/img/thanos.png" alt="">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="">
+                                <img src="assets/img/ultron.png" alt="">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="">
+                                <img src="assets/img/galactus.png" alt="">
+                            </a>
+                        </div>
+                        <a href="#section6" class="arrow__btn"><span>›</span></a>
+                    </section>
+                    <section id="section6">
+                        <a href="#section4" class="arrow__btn"><span>‹</span></a>
+                        <div class="item">
+                            <a href="">
+                                <img src="assets/img/hela.png" alt="">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="">
+                                <img src="assets/img/magneto.png" alt="">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="">
+                                <img src="assets/img/venom.png" alt="">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="">
+                                <img src="assets/img/senhor-do-crime.png" alt="">
+                            </a>
+                        </div>
+                        <a href="#section4" class="arrow__btn"><span>›</span></a>
+                    </section>
+                </div>
+            </div>
+            <!-- CARROSSEL DE VILÕES FINAL -->
+        </div>
     </div>
 
-  
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./api.js"></script>

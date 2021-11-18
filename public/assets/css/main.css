@@ -1,9 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
 body {
-  background: black url(../img/gCWHKN.gif) no-repeat center;
-  background-size: cover;
-
-  background-attachment: fixed;
+  background-color: black;
 }
 
 #logo {
@@ -15,37 +11,38 @@ body {
 }
 
 .btn-outline-secondary {
-  background-color: #ffffff;
-  color: #ced4da;
-  border-color: #ced4da;
+  background-color: #FFFFFF;
+  color: #CED4DA;
+  border-color: #CED4DA
 }
 
 .btn-outline-secondary:hover {
-  background-color: #ffffff;
-  border-color: #ced4da;
+  background-color: #FFFFFF;
+  border-color: #CED4DA
 }
 
 .btn-outline-secondary:focus {
-  box-shadow: 0 0 2rem 0.25rem #adb5bd;
+  box-shadow: 0 0 2rem .25rem #ADB5BD
 }
 
 .btn {
   margin-left: -50px;
   border-radius: 00px 300px 300px 00px;
-  border-left: none;
+  border-left: none
 }
+
 
 .form-control {
   border-radius: 300px;
-  border-right: none;
+  border-right: none
 }
 
 .form-control:focus {
   color: #212529;
   background-color: #fff;
-  border-color: #adb5bd;
+  border-color: #ADB5BD;
   outline: 0;
-  box-shadow: 0 0 2rem 0.25rem #adb5bd;
+  box-shadow: 0 0 2rem .25rem #ADB5BD;
 }
 
 #search {
@@ -64,23 +61,29 @@ body {
   /* background; */
 }
 
-.title-heroes h5 {
+.title-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   text-transform: uppercase;
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 22px;
   line-height: 29px;
   letter-spacing: 0.615em;
-  color: #b1b1b1;
+  color: #B1B1B1;
 }
-.line1 {
-  position: absolute;
-  width: 1000px;
-  height: 5px;
-  left: 500px;
-  top: 746px;
 
-  border: 2px solid rgba(160, 160, 157, 0.35);
-  border-radius: 0.1rem;
+.title-group::after {
+  content: " ";
+  background-color: #B1B1B1;
+  display: block;
+  height: 2px;
+  width: 60%;
+}
+
+.adjust-pd {
+  padding: 0 50px;
 }
