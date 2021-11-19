@@ -14,10 +14,10 @@ function listaPersonagens() {
         .then((result) => {
             // console.log(result.data);
 
-            const lista = result.data.data;
+            const lista = result.data.data; // test page
             const searchResults = result.data.searchResults;
             const detailsPageResults = result.data.detailsPageResults;
-            const copy = result.data.copy;
+            const copy = result.data.copy; // mensagem do final da pagina
 
             atualizaTabela(lista, copy, searchResults, detailsPageResults);
         })
@@ -72,4 +72,89 @@ function atualizaTabela(lista, copy, searchResults, detailsPageResults) {
     // console.log(searchResults);
 
     document.getElementById("footer").innerHTML = copy;
+}
+
+function searchCharacterById() {
+    let id = document.getElementById("searchByName").value;
+    api.get("/" + id, {
+        params: { page },
+    })
+        .then((res) => {
+            console.log(res.data);
+            const character = res.data.data[0];
+            const copy = res.data.copy;
+            console.log(character.thumbnail.path + character.thumbnail.extension);
+            document.getElementById("replaceNameSeparator").innerText = character.name;
+            document.getElementById("replaceThumbnailResults").src = character.thumbnail.path + "." + character.thumbnail.extension;
+            document.getElementById("replaceNameResults").innerText = character.name;
+            document.getElementById("replaceDescriptionResults").innerText = character.description;
+            document.getElementById("replaceLinkResults").innerText = character.urls[0].url;
+            document.getElementById("replaceComicsQuantityResults").innerText = character.comics.available;
+            document.getElementById("replaceSeriesQuantityResults").innerText = character.series.available;
+            document.getElementById("replaceStoriesQuantityResults").innerText = character.stories.available;
+            document.getElementById("replaceEventsQuantityResults").innerText = character.events.available;
+        })
+        .catch((err) => {
+            console.log("erro :(");
+            console.log(err);
+            console.log(err.req);
+            console.log(err.res);
+        });
+}
+
+function searchCharacterComicsById() {
+    let id = document.getElementById("searchByName").value;
+    api.get("/comics/" + id, {
+        params: { page },
+    })
+        .then((res) => {
+            console.log("log da res.data:");
+            console.log(res.data);
+            const comicsList = res.data.data;
+            const copy = res.data.copy;
+
+            for (const comic of comicsList) {
+                let thumb = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
+                if (
+                    thumb == "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" ||
+                    thumb == `http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708.gif` ||
+                    thumb == "insira aqui outra imagem para exceção"
+                ) {
+                    // se for as imagens de "not found", mostra a logo marvel abaixo
+                    thumb = `https://i.ibb.co/JQM4M31/Wallpaperkiss-2389005-1666.jpg`; // logo da marvel
+                }
+
+                console.log("log da comic:");
+                console.log(comic);
+
+                document.getElementById("comicsList").innerHTML += `
+                
+                <li class="mt-3 ms-2 me-2" style="max-width: 300px;">
+                
+                <div class="card" style="width: 300px; height: 800px">
+                    <img src="${thumb}" class="card-img-top" alt="${comic.title}">
+                    <div class="card-body" style="overflow: auto;">
+                        <p class="card-text">
+                            <strong>Title:</strong> ${comic.title}<br>
+                            <strong>Series:</strong> ${comic.series.name}<br>
+                            <strong>Description:</strong> 
+                            ${comic.description == null ? "Description not found." : comic.description}
+                        </p>
+                    </div>
+                </div>
+                
+
+                
+
+                </li>
+    
+                `;
+            }
+        })
+        .catch((err) => {
+            console.log("erro :(");
+            console.log(err);
+            console.log(err.req);
+            console.log(err.res);
+        });
 }

@@ -78,7 +78,7 @@
 
             height: 550px;
             width: 550px;
-            background-color: black;
+            /* background-color: black; */
             border-radius: 40px;
 
         }
@@ -133,7 +133,7 @@
                 <div id="searchInput" class="input-group">
                     <input id="searchByName" type="text" class="form-control" placeholder="Search by name..."
                         aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <button class="btn btn-outline-secondary" id="basic-addon2" onclick="searchByName()"><img
+                    <button class="btn btn-outline-secondary" id="basic-addon2" onclick="searchCharacterById()"><img
                             src="https://img.icons8.com/material-outlined/24/000000/search--v1.png" /></button>
                 </div>
 
@@ -142,21 +142,22 @@
         <div class="container">
 
             <div id="separator" class="d-flex align-items-center justify-content-evenly">
-                <h5 class="title-heroes">Hero name</h5> <img id="line1" src="./assets/img/line.png">
+                <h5 id="replaceNameSeparator" class="title-heroes">Hero name</h5> <img id="line1"
+                    src="./assets/img/line.png">
             </div>
 
             <div id="topResults" class="d-flex align-items-center justify-content-evenly mt-3">
                 <div id="imgTopResults" class="ms-5 d-flex align-items-center justify-content-around ">
-                    <img src="" alt="Nome do heroi">
+                    <img id="replaceThumbnailResults" src="" alt="Nome do heroi">
                 </div>
                 <div id="contentTopResults" class=" d-flex flex-column  justify-content-around">
-                    <h1>Nome do heroi "name"</h1>
-                    <p>Descrição do heroi "description"</p>
-                    <p>Link para página "detailsPage"</p>
-                    <p>Quantidade comics</p>
-                    <p>Quantidade series</p>
-                    <p>Quantidade stories</p>
-                    <p>Quantidade events</p>
+                    <h1 id="replaceNameResults">Nome do heroi "name"</h1>
+                    <p id="replaceDescriptionResults">Descrição do heroi "description"</p>
+                    <p id="replaceLinkResults">Link para página "detailsPage"</p>
+                    <p id="replaceComicsQuantityResults">Quantidade comics</p>
+                    <p id="replaceSeriesQuantityResults">Quantidade series</p>
+                    <p id="replaceStoriesQuantityResults">Quantidade stories</p>
+                    <p id="replaceEventsQuantityResults">Quantidade events</p>
                 </div>
             </div>
         </div>
@@ -170,15 +171,17 @@
             </div>
 
             <div id="comicsResults" class="d-flex align-items-center justify-content-around ">
-                <div id="comic" class="d-flex align-items-center justify-content-around">
-                    <p>teste</p>
-                    <p>teste</p>
-                    <p>teste</p>
-                    <p>teste</p>
-                    <p>teste</p>
+                <div id="comic">
+                    <ul id="comicsList" class="d-flex align-items-start justify-content-evenly flex-wrap">
+
+
+
+
+                    </ul>
                 </div>
             </div>
         </div>
+
 
     </div>
 
