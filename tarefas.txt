@@ -1,2 +1,4 @@
 Jamerson- aqui fazemos os comentarios do estamos fazendo no projeto.
 Jamerson - vou fazer aquivos js.........
+
+Crh - fiz uma parte da página de detalhes do character, falta fazer uma paginação nas comics de alguma forma.
