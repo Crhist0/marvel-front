@@ -74,8 +74,15 @@ function atualizaTabela(lista, copy, searchResults, detailsPageResults) {
     document.getElementById("footer").innerHTML = copy;
 }
 
+// function searchButton() {
+//     let x = document.getElementById("searchByName").value;
+//     window.location.assign("/public/results.html"); // aqui gostaria que trocasse de página e continuasse a executar a função mas não consegui ainda rs
+//     searchCharacterById(x);
+// }
+
 function searchCharacterById() {
     let id = document.getElementById("searchByName").value;
+
     api.get("/" + id, {
         params: { page },
     })
@@ -83,16 +90,19 @@ function searchCharacterById() {
             console.log(res.data);
             const character = res.data.data[0];
             const copy = res.data.copy;
+            const desc = character.description ? character.description : `No description available.`;
+            const url1 = character.urls[0].url;
+            const url2 = character.urls[1].url; // isso vai dar problema
+
             console.log(character.thumbnail.path + character.thumbnail.extension);
             document.getElementById("replaceNameSeparator").innerText = character.name;
             document.getElementById("replaceThumbnailResults").src = character.thumbnail.path + "." + character.thumbnail.extension;
-            document.getElementById("replaceNameResults").innerText = character.name;
-            document.getElementById("replaceDescriptionResults").innerText = character.description;
-            document.getElementById("replaceLinkResults").innerText = character.urls[0].url;
-            document.getElementById("replaceComicsQuantityResults").innerText = character.comics.available;
-            document.getElementById("replaceSeriesQuantityResults").innerText = character.series.available;
-            document.getElementById("replaceStoriesQuantityResults").innerText = character.stories.available;
-            document.getElementById("replaceEventsQuantityResults").innerText = character.events.available;
+            document.getElementById("replaceThumbnailResults").style.display = "block";
+            document.getElementById("replaceNameResults").innerText = `Name: ${character.name}`;
+            document.getElementById("replaceDescriptionResults").innerHTML = `Description: ${desc} <a href="${url1}" target="blank">More info here</a>.`;
+            document.getElementById("replaceComicsQuantities").innerHTML = `
+            Between ${character.series.available} series, this character has featured in ${character.comics.available} comics. Check out <a href="${url2}" target="blank">more of them here</a>.`;
+            searchCharacterComicsById(id);
         })
         .catch((err) => {
             console.log("erro :(");
@@ -102,8 +112,7 @@ function searchCharacterById() {
         });
 }
 
-function searchCharacterComicsById() {
-    let id = document.getElementById("searchByName").value;
+function searchCharacterComicsById(id) {
     api.get("/comics/" + id, {
         params: { page },
     })
@@ -112,6 +121,10 @@ function searchCharacterComicsById() {
             console.log(res.data);
             const comicsList = res.data.data;
             const copy = res.data.copy;
+
+            let x = 1;
+
+            document.getElementById("comicsList").innerHTML = ``; // reset
 
             for (const comic of comicsList) {
                 let thumb = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
@@ -129,11 +142,12 @@ function searchCharacterComicsById() {
 
                 document.getElementById("comicsList").innerHTML += `
                 
-                <li class="mt-3 ms-2 me-2" style="max-width: 300px;">
+                <li class="mt-3 mb-4 ms-2 me-2" style="max-width: 300px;">
                 
-                <div class="card" style="width: 300px; height: 800px">
-                    <img src="${thumb}" class="card-img-top" alt="${comic.title}">
-                    <div class="card-body" style="overflow: auto;">
+                <div class="card" style="width: 300px; height: 700px">
+                <a href="${comic.urls[0].url}" target="blank">
+                    <img id="comicsResultImage${x}"  src="${thumb}" class="card-img-top" alt="${comic.title}"></a>
+                    <div class="card-body scrollable-element" style="overflow: auto;">
                         <p class="card-text">
                             <strong>Title:</strong> ${comic.title}<br>
                             <strong>Series:</strong> ${comic.series.name}<br>
@@ -149,7 +163,9 @@ function searchCharacterComicsById() {
                 </li>
     
                 `;
+                x++;
             }
+            document.getElementById("copy").innerHTML = copy;
         })
         .catch((err) => {
             console.log("erro :(");
@@ -158,3 +174,14 @@ function searchCharacterComicsById() {
             console.log(err.res);
         });
 }
+
+// comicCard.addEventListener("mouseover", showInfo, false);
+// comicCard.addEventListener("mouseout", hideInfo, false);
+
+// function showInfo(x) {
+//     document.getElementById(`comicsResultImage${x}`).style.display = `none`;
+// }
+
+// function hideInfo(x) {
+//     document.getElementById(`comicsResultImage${x}`).style.display = `block`;
+// }
