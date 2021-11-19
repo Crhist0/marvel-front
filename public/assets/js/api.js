@@ -99,7 +99,7 @@ function searchCharacterById() {
                 character.urls[1].url ? character.urls[1].url : character.urls[0].url
             }" target="blank">More info here</a>.`;
             // document.getElementById("replaceLinkResults").innerText = character.urls[0].url;
-            document.getElementById("replaceComicsQuantities").innerHTML = `Between ${character.series.available} series, this character has participate in ${
+            document.getElementById("replaceComicsQuantities").innerHTML = `Between ${character.series.available} series, this character has featured in ${
                 character.comics.available
             } comics. Check out <a href="${character.urls[2].url ? character.urls[2].url : character.urls[1].url}" target="blank">more of them here</a>.`;
             searchCharacterComicsById(id);
