@@ -90,18 +90,18 @@ function searchCharacterById() {
             console.log(res.data);
             const character = res.data.data[0];
             const copy = res.data.copy;
+            const desc = character.description ? character.description : `No description available.`;
+            const url1 = character.urls[0].url;
+            const url2 = character.urls[1].url; // isso vai dar problema
+
             console.log(character.thumbnail.path + character.thumbnail.extension);
             document.getElementById("replaceNameSeparator").innerText = character.name;
             document.getElementById("replaceThumbnailResults").src = character.thumbnail.path + "." + character.thumbnail.extension;
             document.getElementById("replaceThumbnailResults").style.display = "block";
             document.getElementById("replaceNameResults").innerText = `Name: ${character.name}`;
-            document.getElementById("replaceDescriptionResults").innerHTML = `Description: ${character.description} <a href="${
-                character.urls[1].url ? character.urls[1].url : character.urls[0].url
-            }" target="blank">More info here</a>.`;
-            // document.getElementById("replaceLinkResults").innerText = character.urls[0].url;
-            document.getElementById("replaceComicsQuantities").innerHTML = `Between ${character.series.available} series, this character has featured in ${
-                character.comics.available
-            } comics. Check out <a href="${character.urls[2].url ? character.urls[2].url : character.urls[1].url}" target="blank">more of them here</a>.`;
+            document.getElementById("replaceDescriptionResults").innerHTML = `Description: ${desc} <a href="${url1}" target="blank">More info here</a>.`;
+            document.getElementById("replaceComicsQuantities").innerHTML = `
+            Between ${character.series.available} series, this character has featured in ${character.comics.available} comics. Check out <a href="${url2}" target="blank">more of them here</a>.`;
             searchCharacterComicsById(id);
         })
         .catch((err) => {
@@ -165,7 +165,7 @@ function searchCharacterComicsById(id) {
                 `;
                 x++;
             }
-            document.getElementById("comicsList").innerHTML += copy;
+            document.getElementById("copy").innerHTML = copy;
         })
         .catch((err) => {
             console.log("erro :(");
