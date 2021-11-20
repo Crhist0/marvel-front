@@ -100,9 +100,9 @@ function searchCharacterById() {
             document.getElementById("replaceThumbnailResults").src = character.thumbnail.path + "." + character.thumbnail.extension;
             document.getElementById("replaceThumbnailResults").style.display = "block";
             document.getElementById("replaceNameResults").innerText = `Name: ${character.name}`;
-            document.getElementById("replaceDescriptionResults").innerHTML = `Description: ${desc} <a href="${url1}" target="blank">More info here</a>.`;
+            document.getElementById("replaceDescriptionResults").innerHTML = `Description: ${desc} <a href="${url1}" target="blank" class="text-center">More info <u>here</u></a>.`;
             document.getElementById("replaceComicsQuantities").innerHTML = `
-            Between ${character.series.available} series, this character has featured in ${character.comics.available} comics. Check out <a href="${url2}" target="blank">more of them here</a>.`;
+            Between ${character.series.available} series, this character has featured in ${character.comics.available} comics. Check out <a href="${url2}" target="blank" class="text-center">more of them <u>here</u></a>.`;
             searchCharacterComicsById(id);
         })
         .catch((err) => {

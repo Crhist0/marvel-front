@@ -76,8 +76,8 @@
         }
 
         #fadeContainer {
-            height: 140px;
-            /* margin-top: -70px; */
+            position: absolute;
+            top: 773px;
             width: 100%;
         }
 
@@ -112,8 +112,17 @@
         } */
 
         #line1 {
-            width: 50vw;
+            width: 80%;
             height: 3px;
+        }
+
+        #line1box {
+            width: 70vw
+        }
+
+        #lineName {
+            width: 25vw;
+
         }
 
         .title-heroes {
@@ -125,15 +134,15 @@
 
         }
 
-        /* #comic {
-            width: 100vw;
-        } */
+        #comic {
+            padding: 0px 51px;
+        }
 
         #replaceThumbnailResults {
             border-radius: 40px;
             -webkit-box-shadow: 10px 14px 30px 3px rgba(0, 0, 0, 0.62);
             display: none;
-            width: 30vw;
+            width: 80%;
             height: fit-content;
         }
 
@@ -152,6 +161,16 @@
 
         #comicsList {
             padding-left: 0px;
+        }
+
+        .text-center {
+            text-decoration: none;
+            color: white;
+        }
+
+        .text-center:hover {
+            text-decoration: none;
+            color: #ED1D24;
         }
     </style>
 </head>
@@ -179,8 +198,12 @@
         <div class="container-fluid" style="z-index: 1;">
 
             <div id="separator" class="d-flex align-items-center justify-content-evenly mt-5">
-                <h5 id="replaceNameSeparator" class="title-heroes">Hero name</h5> <img id="line1"
-                    src="./assets/img/line.png">
+                <div id="lineName" class="d-flex justify-content-end">
+                    <h5 id="replaceNameSeparator" class="title-heroes">Hero name</h5>
+                </div>
+                <div id="line1box" class="d-flex justify-content-start">
+                    <img id="line1" src="./assets/img/line.png">
+                </div>
             </div>
 
             <div id="topResults" class="d-flex align-items-start justify-content-center mt-3">
@@ -207,10 +230,15 @@
             <p id="fade"></p>
         </div>
 
-        <div class="container-fluid mt-5">
+        <div class="container-fluid">
 
             <div id="separator" class="d-flex align-items-center justify-content-evenly">
-                <h5 class="title-heroes">Comics</h5> <img id="line1" src="./assets/img/line.png">
+                <div id="lineName" class="d-flex justify-content-end">
+                    <h5 class="title-heroes">Comics</h5>
+                </div>
+                <div id="line1box" class="d-flex justify-content-start">
+                    <img id="line1" src="./assets/img/line.png">
+                </div>
             </div>
 
             <div id="comicsResults" class="d-flex align-items-center justify-content-around ">
@@ -224,7 +252,7 @@
                 </div>
             </div>
 
-            <div id="copy" class="d-flex flex-column align-items-center">
+            <div id="copy" class="d-flex flex-column align-items-center mt-5 mb-3 text-center">
 
             </div>
 
