@@ -93,6 +93,7 @@ function searchCharacterById() {
             const desc = character.description ? character.description : `No description available.`;
             const url1 = character.urls[0].url;
             const url2 = character.urls[1].url; // isso vai dar problema
+            // character.urls é um array, precisa verificar se existe antes e tratar o retorno
 
             console.log(character.thumbnail.path + character.thumbnail.extension);
             document.getElementById("replaceNameSeparator").innerText = character.name;
@@ -142,9 +143,9 @@ function searchCharacterComicsById(id) {
 
                 document.getElementById("comicsList").innerHTML += `
                 
-                <li class="mt-3 mb-4 ms-2 me-2" style="max-width: 300px;">
+                <li class="mt-3 mb-4 ms-4 me-4" style="max-width: 250px;">
                 
-                <div class="card" style="width: 300px; height: 700px">
+                <div class="card" style="width: 250px; height: 700px">
                 <a href="${comic.urls[0].url}" target="blank">
                     <img id="comicsResultImage${x}"  src="${thumb}" class="card-img-top" alt="${comic.title}"></a>
                     <div class="card-body scrollable-element" style="overflow: auto;">
