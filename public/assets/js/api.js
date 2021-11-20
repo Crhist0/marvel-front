@@ -114,6 +114,10 @@ function searchCharacterById() {
 }
 
 function searchCharacterComicsById(id) {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const page = urlParams.get("page");
+
     api.get("/comics/" + id, {
         params: { page },
     })
@@ -174,6 +178,57 @@ function searchCharacterComicsById(id) {
             console.log(err.req);
             console.log(err.res);
         });
+}
+function printHero() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const id = urlParams.get("id");
+    api.get("/" + id, {
+        params: { page },
+    })
+        .then((res) => {
+            console.log(res.data);
+            const character = res.data.data[0];
+            const copy = res.data.copy;
+            const desc = character.description ? character.description : `No description available.`;
+            const url1 = character.urls[0].url;
+            const url2 = character.urls[1].url; // isso vai dar problema
+            // character.urls é um array, precisa verificar se existe antes e tratar o retorno
+
+            let thumb = character.thumbnail.path + "." + character.thumbnail.extension;
+            if (
+                thumb == "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" ||
+                thumb == `http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708.gif` ||
+                thumb == "insira aqui outra imagem para exceção"
+            ) {
+                // se for as imagens de "not found", mostra a logo marvel abaixo
+                thumb = `https://i.ibb.co/vLhYShQ/Screenshot-1.png`;
+            }
+
+            console.log(character.thumbnail.path + character.thumbnail.extension);
+            document.getElementById("replaceNameSeparator").innerText = character.name;
+            document.getElementById("replaceThumbnailResults").src = thumb;
+            document.getElementById("replaceThumbnailResults").style.display = "block";
+            document.getElementById("replaceNameResults").innerText = `Name: ${character.name}`;
+            document.getElementById("replaceDescriptionResults").innerHTML = `Description: ${desc} <a href="${url1}" target="blank" class="text-center">More info <u>here</u></a>.`;
+            document.getElementById("replaceComicsQuantities").innerHTML = `
+            Between ${character.series.available} series, this character has featured in ${character.comics.available} comics. Check out <a href="${url2}" target="blank" class="text-center">more of them <u>here</u></a>.`;
+            searchCharacterComicsById(id);
+        })
+        .catch((err) => {
+            console.log("erro :(");
+            console.log(err);
+            console.log(err.req);
+            console.log(err.res);
+        });
+}
+function changePage(id) {
+    window.location.assign(`http://127.0.0.1:5501/public/results.html?id=${id}`); // trocar para o link do heroku
+}
+
+function searchCharacterByIdMain() {
+    let id = document.getElementById("searchByName").value;
+    changePage(id);
 }
 
 // comicCard.addEventListener("mouseover", showInfo, false);

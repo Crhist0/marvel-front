@@ -112,16 +112,16 @@
         } */
 
         #line1 {
-            width: 80%;
+            width: 70%;
             height: 3px;
         }
 
         #line1box {
-            width: 70vw
+            width: 65vw
         }
 
         #lineName {
-            width: 25vw;
+            width: 30vw;
 
         }
 
@@ -146,14 +146,6 @@
             height: fit-content;
         }
 
-        #comicsResultImage:hover {
-            /* // While hovering
-            // Change to: "details";
-            // Animate: Smart animate;
-            animation-timing-function: ease-in;
-            animation-duration: 500ms; */
-
-        }
 
         .scrollable-element {
             scrollbar-width: thin;
@@ -177,7 +169,7 @@
 
 </div>
 
-<body>
+<body onload="printHero()">
     <div id="results" class="d-flex flex-column align-items-center justify-content-between ">
         <div class="container-fluid">
 
@@ -185,7 +177,7 @@
 
                 <a href="./main.html">
                     <img id="logo" height="50" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Marvel_Logo.svg"
-                        alt="Nome da aplicação" style=" ">
+                        alt="Nome da aplicação">
                 </a>
                 <div id="searchInput" class="input-group">
                     <input id="searchByName" type="text" class="form-control" placeholder="Search by id...">
@@ -197,9 +189,11 @@
         </div>
         <div class="container-fluid" style="z-index: 1;">
 
-            <div id="separator" class="d-flex align-items-center justify-content-evenly mt-5">
+            <div id="separator" class="d-flex align-items-center justify-content-center mt-5">
                 <div id="lineName" class="d-flex justify-content-end">
-                    <h5 id="replaceNameSeparator" class="title-heroes">Hero name</h5>
+                    <div style="width: 80%;">
+                        <h5 id="replaceNameSeparator" class="title-heroes" style="text-align: center;">Hero name</h5>
+                    </div>
                 </div>
                 <div id="line1box" class="d-flex justify-content-start">
                     <img id="line1" src="./assets/img/line.png">
@@ -210,7 +204,7 @@
                 <div id="imgTopResults" class="me-5">
                     <img height="500" id="replaceThumbnailResults" src="" alt="Nome do heroi">
                 </div>
-                <div id="contentTopResults" class="d-flex align-items-start">
+                <div id="contentTopResults" class="d-flex align-items-start scrollable-element">
                     <div id="contentTopResultsInside" class="scrollable-element d-flex flex-column">
                         <!-- <h2 class="h1">Details:</h2> -->
                         <h1 id="replaceNameResults" class="mb-5"></h1>
@@ -230,36 +224,60 @@
             <p id="fade"></p>
         </div>
 
+
+
         <div class="container-fluid">
+            <div class="container-fluid">
 
-            <div id="separator" class="d-flex align-items-center justify-content-evenly">
-                <div id="lineName" class="d-flex justify-content-end">
-                    <h5 class="title-heroes">Comics</h5>
+                <div id="separator" class="d-flex align-items-center justify-content-evenly">
+                    <div id="lineName" class="d-flex justify-content-center">
+                        <h5 class="title-heroes">Comics</h5>
+                    </div>
+                    <div id="line1box" class="d-flex justify-content-start">
+                        <img id="line1" src="./assets/img/line.png">
+                    </div>
                 </div>
-                <div id="line1box" class="d-flex justify-content-start">
-                    <img id="line1" src="./assets/img/line.png">
+
+                <div id="comicsResults" class="d-flex align-items-center justify-content-around ">
+                    <div id="comic">
+                        <ul id="comicsList" class="d-flex align-items-start justify-content-center flex-wrap">
+
+
+
+
+                        </ul>
+                    </div>
                 </div>
+
             </div>
+            <div class="container-fluid">
 
-            <div id="comicsResults" class="d-flex align-items-center justify-content-around ">
-                <div id="comic">
-                    <ul id="comicsList" class="d-flex align-items-start justify-content-center flex-wrap">
+                <div class="d-flex flex-column align-items-center">
 
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
 
-
-
-                    </ul>
                 </div>
-            </div>
-
-            <div id="copy" class="d-flex flex-column align-items-center mt-5 mb-3 text-center">
 
             </div>
-
-
         </div>
 
-
+        <div id="copy" class="d-flex flex-column align-items-center mt-5 pb-3 text-center"></div>
     </div>
 
 
