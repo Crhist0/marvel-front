@@ -4,6 +4,87 @@ const api = axios.create({
 
 const params = new URLSearchParams(window.location.search);
 
+AllListCharacter(
+  Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, "")
+    .substr(0, 1),
+  "1",
+  "#page1"
+);
+AllListCharacter(
+  Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, "")
+    .substr(0, 1),
+  "1",
+  "#page2"
+);
+AllListCharacter(
+  Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, "")
+    .substr(0, 1),
+  "1",
+  "#page3"
+);
+AllListCharacter(
+  Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, "")
+    .substr(0, 1),
+  "1",
+  "#page4"
+);
+AllListCharacter(
+  Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, "")
+    .substr(0, 1),
+  "1",
+  "#page5"
+);
+AllListCharacter(
+  Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, "")
+    .substr(0, 1),
+  "1",
+  "#page6"
+);
+AllListCharacter(
+  Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, "")
+    .substr(0, 1),
+  "1",
+  "#page7"
+);
+AllListCharacter(
+  Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, "")
+    .substr(0, 1),
+  "1",
+  "#page8"
+);
+AllListCharacter(
+  Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, "")
+    .substr(0, 1),
+  "1",
+  "#page9"
+);
+AllListCharacter(
+  Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, "")
+    .substr(0, 1),
+  "1",
+  "#page10"
+);
+
 function listaPersonagens() {
   let page = params.has("page") ? params.get("page") : "1";
   let name = document.getElementById("searchByName").value;
@@ -19,7 +100,7 @@ function listaPersonagens() {
       const detailsPageResults = result.data.detailsPageResults;
       const copy = result.data.copy; // mensagem do final da pagina
 
-      atualizaTabela("#searchCaracter", lista, copy, searchResults, detailsPageResults);
+      atualizaTabela("#searchCaracter", lista, detailsPageResults);
     })
     .catch((err) => {
       console.log("erro?");
@@ -28,9 +109,9 @@ function listaPersonagens() {
       console.log(err.result);
     });
 }
-function AllListCharacter(numero, idHtmlTag) {
+function AllListCharacter(nameH, numero, idHtmlTag) {
   let page = params.has("page") ? params.get("page") : numero;
-  let name = document.getElementById("searchByName").value;
+  let name = nameH;
   api
     .get("/", {
       params: { page, name },
@@ -43,7 +124,7 @@ function AllListCharacter(numero, idHtmlTag) {
       const detailsPageResults = result.data.detailsPageResults;
       const copy = result.data.copy; // mensagem do final da pagina
 
-      atualizaTabela(idHtmlTag, lista, copy, searchResults, detailsPageResults);
+      atualizaTabela(idHtmlTag, lista, detailsPageResults);
     })
     .catch((err) => {
       console.log("erro?");
@@ -53,7 +134,7 @@ function AllListCharacter(numero, idHtmlTag) {
     });
 }
 
-function atualizaTabela(id, lista, copy, searchResults, detailsPageResults) {
+function atualizaTabela(id, lista, detailsPageResults) {
   let list = document.querySelector(id);
   list.style.display = "block";
   //   const tbodyLista = document.querySelector("#searchCaracter > div");
@@ -88,30 +169,22 @@ function atualizaTabela(id, lista, copy, searchResults, detailsPageResults) {
       thumb = `https://i.ibb.co/vLhYShQ/Screenshot-1.png`;
     }
     list.innerHTML += `
-                
-        <div class="card" style="width: 300px; height: 700px">
-        <a href="#" target="blank">
-            <img   src="${thumb}" class="card-img-top" alt="${personagem.name}"></a>
-            <div class="card-body scrollable-element" style="overflow: auto;">
-                <p class="card-text">
-                    <strong>ID:</strong> ${personagem.id}<br>
-                    <strong>Name:</strong> ${personagem.name}<br>
-                    ${personagem.lastModified}<br>
-                    <strong>Description:</strong> 
-                    ${
-                      personagem.description == null
-                        ? "Description not found."
-                        : personagem.description
-                    }<br>
-                    <strong>Name:</strong> ${personagem.name}<br>
-                </p>
-                <div> 
-        ${details} 
-        ${wiki}
-        ${comiclink}
-        </div>
+    <div class="item mt-2">
+      <div class="card" style="width: 10rem; height: 20rem">
+          <a href="#" target="blank">
+            <img   src="${thumb}" class="card-img-top" alt="${personagem.name}" style="height: 10rem">
+          </a>
+            <div class="card-body scrollable-element" style="overflow: auto; ">
+              <p class="card-text" >
+              <strong>ID:</strong> ${personagem.id}<br>
+              <strong>Name:</strong> ${personagem.name}<br>
+              ${personagem.lastModified}<br>
+            
+              </p>
+            
             </div>
-        </div>
+      </div>
+    </div>  
         
 
         
