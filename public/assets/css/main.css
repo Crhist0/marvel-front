@@ -99,3 +99,7 @@ body {
     text-decoration: none;
     color: #ed1d24;
 }
+
+.col-12 {
+    padding: 0px;
+}
