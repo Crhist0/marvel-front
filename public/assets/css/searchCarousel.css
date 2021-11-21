@@ -1,41 +1,50 @@
 .wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 100%);
-    overflow: hidden;
-    scroll-behavior: smooth;
+  display: grid;
+  grid-template-columns: repeat(3, 100%);
+  overflow: hidden;
+  scroll-behavior: smooth;
 }
 
 .wrapper section {
-    width: 100%;
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(5, auto);
-    margin: 20px 0;
+  width: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  margin: 20px 0;
 }
 
 .wrapper section .item {
-    padding: 0 2px;
-    transition: 250ms all;
+  padding: 0 2px;
+  transition: 250ms all;
 }
 .wrapper section .item:hover {
-    margin: 0 40px;
-    transform: scale(1.2);
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-    width: 5%;
+  margin: 0 40px;
+  transform: scale(1.2);
 }
 
 .opacity_0_1 {
-    width: 15rem;
-    height: 15rem;
-    position: absolute;
-    background-color: black;
-    color: white;
-    opacity: 0;
-    transition: opacity 0.8s;
+  width: 15rem;
+  height: 15rem;
+  position: absolute;
+  background-color: black;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.8s;
 }
 .opacity_0_1:hover {
-    opacity: 0.9;
+  opacity: 0.9;
+}
+
+div a {
+  text-decoration: none;
+  color: #fff;
+}
+div a:active,
+div a:visited,
+div a:hover {
+  color: #fff;
+}
+
+.scrollable-element {
+  scrollbar-width: thin;
 }
