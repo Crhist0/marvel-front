@@ -26,3 +26,16 @@
 .carousel-control-next {
   width: 5%;
 }
+
+.opacity_0_1 {
+  width: 10rem;
+  height: 10rem;
+  position: absolute;
+  background-color: black;
+  color: white;
+  opacity: 0;
+  transition: opacity 5s;
+}
+.opacity_0_1:hover {
+  opacity: 0.9;
+}

@@ -4,86 +4,86 @@ const api = axios.create({
 
 const params = new URLSearchParams(window.location.search);
 
-AllListCharacter(
-  Math.random()
-    .toString(36)
-    .replace(/[^a-z]+/g, "")
-    .substr(0, 1),
-  "1",
-  "#page1"
-);
-AllListCharacter(
-  Math.random()
-    .toString(36)
-    .replace(/[^a-z]+/g, "")
-    .substr(0, 1),
-  "1",
-  "#page2"
-);
-AllListCharacter(
-  Math.random()
-    .toString(36)
-    .replace(/[^a-z]+/g, "")
-    .substr(0, 1),
-  "1",
-  "#page3"
-);
-AllListCharacter(
-  Math.random()
-    .toString(36)
-    .replace(/[^a-z]+/g, "")
-    .substr(0, 1),
-  "1",
-  "#page4"
-);
-AllListCharacter(
-  Math.random()
-    .toString(36)
-    .replace(/[^a-z]+/g, "")
-    .substr(0, 1),
-  "1",
-  "#page5"
-);
-AllListCharacter(
-  Math.random()
-    .toString(36)
-    .replace(/[^a-z]+/g, "")
-    .substr(0, 1),
-  "1",
-  "#page6"
-);
-AllListCharacter(
-  Math.random()
-    .toString(36)
-    .replace(/[^a-z]+/g, "")
-    .substr(0, 1),
-  "1",
-  "#page7"
-);
-AllListCharacter(
-  Math.random()
-    .toString(36)
-    .replace(/[^a-z]+/g, "")
-    .substr(0, 1),
-  "1",
-  "#page8"
-);
-AllListCharacter(
-  Math.random()
-    .toString(36)
-    .replace(/[^a-z]+/g, "")
-    .substr(0, 1),
-  "1",
-  "#page9"
-);
-AllListCharacter(
-  Math.random()
-    .toString(36)
-    .replace(/[^a-z]+/g, "")
-    .substr(0, 1),
-  "1",
-  "#page10"
-);
+// AllListCharacter(
+//   Math.random()
+//     .toString(36)
+//     .replace(/[^a-z]+/g, "")
+//     .substr(0, 1),
+//   "1",
+//   "#page1"
+// );
+// AllListCharacter(
+//   Math.random()
+//     .toString(36)
+//     .replace(/[^a-z]+/g, "")
+//     .substr(0, 1),
+//   "1",
+//   "#page2"
+// );
+// AllListCharacter(
+//   Math.random()
+//     .toString(36)
+//     .replace(/[^a-z]+/g, "")
+//     .substr(0, 1),
+//   "1",
+//   "#page3"
+// );
+// AllListCharacter(
+//   Math.random()
+//     .toString(36)
+//     .replace(/[^a-z]+/g, "")
+//     .substr(0, 1),
+//   "1",
+//   "#page4"
+// );
+// AllListCharacter(
+//   Math.random()
+//     .toString(36)
+//     .replace(/[^a-z]+/g, "")
+//     .substr(0, 1),
+//   "1",
+//   "#page5"
+// );
+// AllListCharacter(
+//   Math.random()
+//     .toString(36)
+//     .replace(/[^a-z]+/g, "")
+//     .substr(0, 1),
+//   "1",
+//   "#page6"
+// );
+// AllListCharacter(
+//   Math.random()
+//     .toString(36)
+//     .replace(/[^a-z]+/g, "")
+//     .substr(0, 1),
+//   "1",
+//   "#page7"
+// );
+// AllListCharacter(
+//   Math.random()
+//     .toString(36)
+//     .replace(/[^a-z]+/g, "")
+//     .substr(0, 1),
+//   "1",
+//   "#page8"
+// );
+// AllListCharacter(
+//   Math.random()
+//     .toString(36)
+//     .replace(/[^a-z]+/g, "")
+//     .substr(0, 1),
+//   "1",
+//   "#page9"
+// );
+// AllListCharacter(
+//   Math.random()
+//     .toString(36)
+//     .replace(/[^a-z]+/g, "")
+//     .substr(0, 1),
+//   "1",
+//   "#page10"
+// );
 
 function listaPersonagens() {
   let page = params.has("page") ? params.get("page") : "1";
@@ -109,31 +109,34 @@ function listaPersonagens() {
       console.log(err.result);
     });
 }
-function AllListCharacter(nameH, numero, idHtmlTag) {
-  let page = params.has("page") ? params.get("page") : numero;
-  let name = nameH;
-  api
-    .get("/", {
-      params: { page, name },
-    })
-    .then((result) => {
-      console.log(result.data);
+// function AllListCharacter(nameH, numero, idHtmlTag) {
+//   let page = params.has("page") ? params.get("page") : numero;
+//   let name = nameH;
+//   api
+//     .get("/", {
+//       params: { page, name },
+//     })
+//     .then((result) => {
+//       console.log(result.data);
 
-      const lista = result.data.data; // test page
-      const searchResults = result.data.searchResults;
-      const detailsPageResults = result.data.detailsPageResults;
-      const copy = result.data.copy; // mensagem do final da pagina
+//       const lista = result.data.data; // test page
+//       const searchResults = result.data.searchResults;
+//       const detailsPageResults = result.data.detailsPageResults;
+//       const copy = result.data.copy; // mensagem do final da pagina
 
-      atualizaTabela(idHtmlTag, lista, detailsPageResults);
-    })
-    .catch((err) => {
-      console.log("erro?");
-      console.log(err);
-      console.log(err.request);
-      console.log(err.result);
-    });
-}
+//       atualizaTabela(idHtmlTag, lista, detailsPageResults);
+//     })
+//     .catch((err) => {
+//       console.log("erro?");
+//       console.log(err);
+//       console.log(err.request);
+//       console.log(err.result);
+//     });
+// }
 
+// function changePage(num) {
+//   window.location.href = `http://127.0.0.1:5501/public/searchResults.html?page=${num}`; // trocar para o link do heroku
+// }
 function atualizaTabela(id, lista, detailsPageResults) {
   let list = document.querySelector(id);
   list.style.display = "block";
@@ -170,27 +173,23 @@ function atualizaTabela(id, lista, detailsPageResults) {
     }
     list.innerHTML += `
     <div class="item mt-2">
-      <div class="card" style="width: 10rem; height: 20rem">
-          <a href="#" target="blank">
+      <div class="card clickHere" style="width: 10rem; height: 10.2rem">
+         
             <img   src="${thumb}" class="card-img-top" alt="${personagem.name}" style="height: 10rem">
-          </a>
-            <div class="card-body scrollable-element" style="overflow: auto; ">
+          
+            <div class="card-body scrollable-element opacity_0_1" style="overflow: auto;" >
               <p class="card-text" >
               <strong>ID:</strong> ${personagem.id}<br>
               <strong>Name:</strong> ${personagem.name}<br>
               ${personagem.lastModified}<br>
-            
+             <a href="" target="blank">See more</a>
               </p>
             
             </div>
       </div>
-    </div>  
-        
-
-        
-
-        </li>`;
+    </div>`;
   }
+
   // console.log(searchResults);
 
   //   document.getElementById("footer").innerHTML = copy;
