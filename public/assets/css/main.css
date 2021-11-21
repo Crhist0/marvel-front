@@ -103,3 +103,20 @@ body {
 .col-12 {
     padding: 0px;
 }
+
+#anchor {
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    top: 80vh;
+    left: 49vw;
+}
+#anchor:hover {
+    text-decoration: none;
+    color: #ed1d24;
+}
+
+#anchorImg {
+    width: 50px;
+    height: 50px;
+}
