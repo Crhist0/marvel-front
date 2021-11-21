@@ -164,6 +164,14 @@
             text-decoration: none;
             color: #ED1D24;
         }
+
+        .paginationColor {
+            color: black;
+        }
+
+        .paginationColor:hover {
+            color: #ED1D24;
+        }
     </style>
 </head>
 
@@ -231,7 +239,7 @@
 
                 <div id="separator" class="d-flex align-items-center justify-content-evenly">
                     <div id="lineName" class="d-flex justify-content-center">
-                        <h5 class="title-heroes">Comics</h5>
+                        <h5 id="titleComics" class="title-heroes">Comics</h5>
                     </div>
                     <div id="line1box" class="d-flex justify-content-start">
                         <img id="line1" src="./assets/img/line.png">
@@ -256,17 +264,20 @@
 
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
+                            <li id="liBefore" style="display: none;" class="page-item">
+                                <a href="#titleComics" onclick="changePageAfterBefore(-1)" id="page-itemB"
+                                    class="page-link" style="cursor: pointer;" aria-label="Previous">
+                                    <span class="paginationColor" aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
+                            <li id="page-item1" style="display: none;" class="page-item" value="1"><a
+                                    href="#titleComics" id="pageCounter" onclick="searchCharacterComicsById(1)"
+                                    class="page-link paginationColor" style="cursor: pointer;">1</a>
+                            </li>
+                            <li id="liAfter" style="display: none;" class="page-item">
+                                <a href="#titleComics" onclick="changePageAfterBefore(1)" id="page-itemA"
+                                    class="page-link" style="cursor: pointer;" aria-label="Next">
+                                    <span class="paginationColor" aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
                         </ul>

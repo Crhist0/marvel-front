@@ -33,7 +33,7 @@ function atualizaTabela(lista, copy, searchResults, detailsPageResults) {
     let list = document.querySelector("#listaPersonagens");
     list.style.display = "block";
     const tbodyLista = document.querySelector("#listaPersonagens > tbody");
-    console.log(detailsPageResults);
+    // console.log(detailsPageResults);
     tbodyLista.innerHTML = "";
 
     for (const personagem of lista) {
@@ -87,7 +87,7 @@ function searchCharacterById() {
         params: { page },
     })
         .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             const character = res.data.data[0];
             const copy = res.data.copy;
             const desc = character.description ? character.description : `No description available.`;
@@ -95,14 +95,14 @@ function searchCharacterById() {
             const url2 = character.urls[1].url; // isso vai dar problema
             // character.urls é um array, precisa verificar se existe antes e tratar o retorno
 
-            console.log(character.thumbnail.path + character.thumbnail.extension);
+            // console.log(character.thumbnail.path + character.thumbnail.extension);
             document.getElementById("replaceNameSeparator").innerText = character.name;
             document.getElementById("replaceThumbnailResults").src = character.thumbnail.path + "." + character.thumbnail.extension;
             document.getElementById("replaceThumbnailResults").style.display = "block";
             document.getElementById("replaceNameResults").innerText = `Name: ${character.name}`;
             document.getElementById("replaceDescriptionResults").innerHTML = `Description: ${desc} <a href="${url1}" target="blank" class="text-center">More info <u>here</u></a>.`;
             document.getElementById("replaceComicsQuantities").innerHTML = `
-            Between ${character.series.available} series, this character has featured in ${character.comics.available} comics. Check out <a href="${url2}" target="blank" class="text-center">more of them <u>here</u></a>.`;
+            Between ${character.series.available} series, this character has featured in <span id="comicsQuantity">${character.comics.available}</span> comics. Check out <a href="${url2}" target="blank" class="text-center">more of them <u>here</u></a>.`;
             searchCharacterComicsById(id);
         })
         .catch((err) => {
@@ -113,24 +113,47 @@ function searchCharacterById() {
         });
 }
 
-function searchCharacterComicsById(id) {
+function changePageAfterBefore(x) {
+    let page = Number(document.getElementById("pageCounter").innerText);
+    page = page + x;
+    let pageQuantity = parseInt(Number(document.getElementById("comicsQuantity").innerText) / 10);
+    console.log(pageQuantity);
+    if (page <= 1) {
+        document.getElementById("liBefore").style.display = "none";
+    } else if (page > 1) {
+        document.getElementById("liBefore").style.display = "block";
+    }
+    if (pageQuantity <= 1) {
+        document.getElementById("liAfter").style.display = "none";
+        document.getElementById("page-item1").style.display = "none";
+    } else if (pageQuantity > 1) {
+        document.getElementById("liAfter").style.display = "block";
+        document.getElementById("page-item1").style.display = "block";
+    }
+    console.log(page);
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const page = urlParams.get("page");
+    const id = urlParams.get("id");
+    searchCharacterComicsById(id, page);
+    document.getElementById("pageCounter").innerText = page;
+}
+
+function searchCharacterComicsById(id, page) {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
 
     api.get("/comics/" + id, {
-        params: { page },
+        params: { page: page },
     })
         .then((res) => {
-            console.log("log da res.data:");
-            console.log(res.data);
+            // console.log("log da res.data:");
+            // console.log(res.data);
             const comicsList = res.data.data;
             const copy = res.data.copy;
 
             let x = 1;
 
             document.getElementById("comicsList").innerHTML = ``; // reset
-
             for (const comic of comicsList) {
                 let thumb = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
                 if (
@@ -142,8 +165,8 @@ function searchCharacterComicsById(id) {
                     thumb = `https://i.ibb.co/JQM4M31/Wallpaperkiss-2389005-1666.jpg`; // logo da marvel
                 }
 
-                console.log("log da comic:");
-                console.log(comic);
+                // console.log("log da comic:");
+                // console.log(comic);
 
                 document.getElementById("comicsList").innerHTML += `
                 
@@ -170,6 +193,22 @@ function searchCharacterComicsById(id) {
                 `;
                 x++;
             }
+            let page = Number(document.getElementById("pageCounter").innerText);
+            console.log(`Page: ${page}`);
+            let pageQuantity = parseInt(Number(document.getElementById("comicsQuantity").innerText) / 10);
+            console.log(`Page quantity${pageQuantity}`);
+            if (page <= 1) {
+                document.getElementById("liBefore").style.display = "none";
+            } else if (page > 1) {
+                document.getElementById("liBefore").style.display = "block";
+            }
+            if (pageQuantity <= 1) {
+                document.getElementById("liAfter").style.display = "none";
+                document.getElementById("page-item1").style.display = "none";
+            } else if (pageQuantity > 1) {
+                document.getElementById("liAfter").style.display = "block";
+                document.getElementById("page-item1").style.display = "block";
+            }
             document.getElementById("copy").innerHTML = copy;
         })
         .catch((err) => {
@@ -183,11 +222,12 @@ function printHero() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const id = urlParams.get("id");
+    // const comicsPage = urlParams.get("page") ? urlParams.get("page") : 1; // aqui ta certo
     api.get("/" + id, {
         params: { page },
     })
         .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             const character = res.data.data[0];
             const copy = res.data.copy;
             const desc = character.description ? character.description : `No description available.`;
@@ -205,14 +245,14 @@ function printHero() {
                 thumb = `https://i.ibb.co/vLhYShQ/Screenshot-1.png`;
             }
 
-            console.log(character.thumbnail.path + character.thumbnail.extension);
+            // console.log(character.thumbnail.path + character.thumbnail.extension);
             document.getElementById("replaceNameSeparator").innerText = character.name;
             document.getElementById("replaceThumbnailResults").src = thumb;
             document.getElementById("replaceThumbnailResults").style.display = "block";
             document.getElementById("replaceNameResults").innerText = `Name: ${character.name}`;
             document.getElementById("replaceDescriptionResults").innerHTML = `Description: ${desc} <a href="${url1}" target="blank" class="text-center">More info <u>here</u></a>.`;
             document.getElementById("replaceComicsQuantities").innerHTML = `
-            Between ${character.series.available} series, this character has featured in ${character.comics.available} comics. Check out <a href="${url2}" target="blank" class="text-center">more of them <u>here</u></a>.`;
+            Between ${character.series.available} series, this character has featured in <span id="comicsQuantity">${character.comics.available}</span> comics. Check out <a href="${url2}" target="blank" class="text-center">more of them <u>here</u></a>.`;
             searchCharacterComicsById(id);
         })
         .catch((err) => {
