@@ -112,7 +112,7 @@ function atualizaTabela(id, lista, searchResultQuantity, detailsPageResults, nam
     let limit = 15;
     let showing = () => {
         if (limit * page > max) {
-            return limit * page - max;
+            return max - limit * (page - 1);
         } else {
             return limit;
         }
