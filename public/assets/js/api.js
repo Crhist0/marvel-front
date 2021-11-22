@@ -274,7 +274,7 @@ function changePage(id) {
 }
 function changePageAndSearch() {
     let name = document.getElementById("searchByName").value;
-    window.location.assign(`https://api-frontend-marvel-crhist0.herokuapp.com/searchresults.html?name=${name}`); // trocar para o link do heroku - feito!
+    window.location.assign(`https://api-frontend-marvel-crhist0.herokuapp.com/searchResults.html?name=${name}`); // trocar para o link do heroku - feito!
 }
 
 function searchCharacterByIdMain() {
