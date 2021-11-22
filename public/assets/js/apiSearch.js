@@ -85,7 +85,7 @@ function atualizaTabela(id, lista, searchResultQuantity, detailsPageResults, nam
             </div>
         </div>`;
     }
-    document.getElementById("replaceNameSeparator").innerHTML = `<span id="showingCount"></span> of ${searchResultQuantity} Results for 
+    document.getElementById("replaceNameSeparator").innerHTML = `<span id="showingCount"></span> of <span id="maxCount">${searchResultQuantity}</span> Results for 
     "<span id="getSearchName">${name}</span>"`;
     document.getElementById("replaceNameSeparator").value = Math.ceil(searchResultQuantity / 15);
     window.location.assign("#replaceNameSeparator");
@@ -108,9 +108,16 @@ function atualizaTabela(id, lista, searchResultQuantity, detailsPageResults, nam
     if (page >= pageQuantity) {
         document.getElementById("liAfter").style.display = "none";
     }
-
-    let showing = Number(document.getElementById("pageCounter").innerText) * 15;
-    document.getElementById("showingCount").innerText = showing;
+    let max = document.getElementById("maxCount").innerText;
+    let limit = 15;
+    let showing = () => {
+        if (limit * page > max) {
+            return limit * page - max;
+        } else {
+            return limit;
+        }
+    };
+    document.getElementById("showingCount").innerText = showing();
 }
 
 function showResultsIfSearched() {
