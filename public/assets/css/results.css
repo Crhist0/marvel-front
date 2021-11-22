@@ -48,7 +48,7 @@ body {
 
 #results {
     height: 40rem;
-    background-image: url(./img/image.jpg);
+    background-image: url(../img/image.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: initial;
