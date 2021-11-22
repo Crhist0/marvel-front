@@ -87,9 +87,7 @@ function searchCharacterById() {
             const desc = character.description ? character.description : `No description available.`;
             const url1 = character.urls[0].url;
             const url2 = character.urls[1].url; // isso vai dar problema
-            // character.urls é um array, precisa verificar se existe antes e tratar o retorno
 
-            // console.log(character.thumbnail.path + character.thumbnail.extension);
             document.getElementById("replaceNameSeparator").innerText = character.name;
             document.getElementById("replaceThumbnailResults").src = character.thumbnail.path + "." + character.thumbnail.extension;
             document.getElementById("replaceThumbnailResults").style.display = "block";
@@ -228,8 +226,8 @@ function printHero() {
             const character = res.data.data[0];
             const copy = res.data.copy;
             const desc = character.description ? character.description : `No description available.`;
-            const url1 = character.urls[0].url;
-            const url2 = character.urls[1].url; // isso vai dar problema
+            // const url1 = character.urls[0].url;
+            // const url2 = character.urls[1].url; // isso vai dar problema
             // character.urls é um array, precisa verificar se existe antes e tratar o retorno
 
             let thumb = character.thumbnail.path + "." + character.thumbnail.extension;
@@ -241,15 +239,27 @@ function printHero() {
                 // se for as imagens de "not found", mostra a logo marvel abaixo
                 thumb = `https://i.ibb.co/vLhYShQ/Screenshot-1.png`;
             }
+            let url1 = false;
+            let url2 = false;
+            for (const url of character.urls) {
+                if (url.type == "wiki") {
+                    url1 = `<a href="${url.url}" target="blank" class="text-center">More info <u>here</u></a>.`;
+                }
+                if (url.type == "detail") {
+                    url2 = `<a href="${url.url}" target="blank" class="text-center">See all of them on the <u>oficial site</u></a>.`;
+                }
+            }
+            console.log(url1);
+            console.log(url2);
 
             // console.log(character.thumbnail.path + character.thumbnail.extension);
             document.getElementById("replaceNameSeparator").innerText = character.name;
             document.getElementById("replaceThumbnailResults").src = thumb;
             document.getElementById("replaceThumbnailResults").style.display = "block";
             document.getElementById("replaceNameResults").innerText = `Name: ${character.name}`;
-            document.getElementById("replaceDescriptionResults").innerHTML = `Description: ${desc} <a href="${url1}" target="blank" class="text-center">More info <u>here</u></a>.`;
+            document.getElementById("replaceDescriptionResults").innerHTML = `Description: ${desc} ${url1 ? url1 : ""}`;
             document.getElementById("replaceComicsQuantities").innerHTML = `
-            Between ${character.series.available} series, this character has featured in <span id="comicsQuantity">${character.comics.available}</span> comics. Check them out below.`;
+            Between ${character.series.available} series, this character has featured in <span id="comicsQuantity">${character.comics.available}</span> comics. ${url2 ? url2 : ""}</a>`;
             searchCharacterComicsById(id);
         })
         .catch((err) => {
