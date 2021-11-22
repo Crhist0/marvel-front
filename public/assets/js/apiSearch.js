@@ -17,40 +17,24 @@ function listaPersonagens(name, limit) {
     const urlParams = new URLSearchParams(queryString);
     // let page = urlParams.has("page") ? params.get("page") : "1";
     let url = urlParams.has("name");
-    console.log(`
-    url tem name? = ${url}`);
+
     if (url) {
         name = params.get("name");
-        console.log(`
-        name dentro do if: ${name}`);
         params.delete("name");
         name == null ? (name = document.getElementById("getSearchName").innerText) : (name = name);
-        console.log(`
-        name dentro do if depois de ver se é nulo: ${name}`);
     } else {
         name = document.getElementById("searchByName").value;
-        console.log(`
-        name dentro do else: ${name}`);
     }
-    console.log(`
-Nome antes da chamada da api
-name: ${name}
-`);
-    // let page = Number(document.getElementById("pageCounter").innerText);
     limit = 15;
     api.get("/", {
         params: { page: pageC, name, limit },
     })
         .then((result) => {
-            // console.log(result.data);
-
             const lista = result.data.data; // test page
             const searchResultQuantity = result.data.data2; // test page
-            console.log(result);
             const searchResults = result.data.searchResults;
             const detailsPageResults = result.data.detailsPageResults;
             const copy = result.data.copy; // mensagem do final da pagina
-            console.log(lista);
 
             atualizaTabela("#searchCaracter", lista, searchResultQuantity, detailsPageResults, name);
         })
@@ -65,17 +49,11 @@ name: ${name}
 function atualizaTabela(id, lista, searchResultQuantity, detailsPageResults, name) {
     let list = document.querySelector(id);
     list.style.display = "block";
-    //   const tbodyLista = document.querySelector("#searchCaracter > div");
-    // console.log(detailsPageResults);
     list.innerHTML = "";
-    // console.log(lista);
     for (const personagem of lista) {
         let thumb = personagem.thumbnail;
-        // link para página de detalhes, em geral é a mesma que a comiclink page
         let details = personagem.details == -1 || personagem.details == "" ? "" : `<p><a href="${personagem.details}">details</a></p>`;
-        // link para página wiki quando possui
         let wiki = personagem.wiki == -1 || personagem.wiki == "" ? "" : `<p><a href="${personagem.wiki}">wiki</a></p>`;
-        // link para página de "comiclink", em geral é a mesma da de details
         let comiclink = personagem.comiclink == -1 || personagem.comiclink == "" ? "" : `<p><a href="${personagem.comiclink}">comiclink</a></p>`;
 
         if (
@@ -86,7 +64,7 @@ function atualizaTabela(id, lista, searchResultQuantity, detailsPageResults, nam
             // se for as imagens de "not found", mostra a logo marvel abaixo
             thumb = `https://i.ibb.co/vLhYShQ/Screenshot-1.png`;
         }
-        let showing = Number(document.getElementById("").innerText) * 15;
+        let showing = Number(document.getElementById("pageCounter").innerText) * 15;
         list.innerHTML += `
         <div class="item m-4">
             <div class="card clickHere d-flex justify-content-center" style="width: 15rem; ">
@@ -113,12 +91,8 @@ function atualizaTabela(id, lista, searchResultQuantity, detailsPageResults, nam
     window.location.assign("#replaceNameSeparator");
 
     let page = Number(document.getElementById("pageCounter").innerText);
-    console.log(`Page: ${page}`);
-    console.log(`quantidade de resultados: ${searchResultQuantity}`);
     let pageQuantity = Math.ceil(searchResultQuantity / 15);
-    console.log(`Page quantity: ${pageQuantity}`);
 
-    // console.log(`counter: ${counter}`);
     if (page <= 1) {
         document.getElementById("liBefore").style.display = "none";
     } else if (page > 1) {
@@ -134,9 +108,6 @@ function atualizaTabela(id, lista, searchResultQuantity, detailsPageResults, nam
     if (page >= pageQuantity) {
         document.getElementById("liAfter").style.display = "none";
     }
-    // console.log(searchResults);
-
-    //   document.getElementById("footer").innerHTML = copy;
 }
 
 function showResultsIfSearched() {
@@ -148,12 +119,9 @@ function showResultsIfSearched() {
 
 function changePageAfterBefore(x) {
     let page = Number(document.getElementById("pageCounter").innerText);
-    console.log("pag era: " + page);
     page = page + x;
-    console.log("agora pag é: " + page);
     document.getElementById("pageCounter").innerText = page;
     let pageQuantity = document.getElementById("replaceNameSeparator").value;
-    console.log("pageQuantity: " + pageQuantity);
     if (page <= 1) {
         document.getElementById("liBefore").style.display = "none";
     } else if (page > 1) {
@@ -169,7 +137,6 @@ function changePageAfterBefore(x) {
     if (page >= pageQuantity) {
         document.getElementById("liAfter").style.display = "none";
     }
-    console.log(page);
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -177,11 +144,6 @@ function changePageAfterBefore(x) {
 
     let limit = page * 15;
     let name = document.getElementById("getSearchName").innerText;
-    console.log(`
-    Antes de listar
-    limit: ${limit}
-    name: ${name}
-    `);
     listaPersonagens(name, limit);
 }
 
