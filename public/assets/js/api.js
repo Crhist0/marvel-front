@@ -249,8 +249,6 @@ function printHero() {
                     url2 = `<a href="${url.url}" target="blank" class="text-center">See all of them on the <u>oficial site</u></a>.`;
                 }
             }
-            console.log(url1);
-            console.log(url2);
 
             // console.log(character.thumbnail.path + character.thumbnail.extension);
             document.getElementById("replaceNameSeparator").innerText = character.name;
