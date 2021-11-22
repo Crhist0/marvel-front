@@ -25,8 +25,8 @@
               alt="Nome da aplicação">
           </a>
           <div id="searchInput" class="input-group mb-3  mt-5">
-            <input id="searchByName" type="text" class="form-control" placeholder="Search by id...">
-            <button class="btn btn-outline-secondary" id="basic-addon2" onclick="searchCharacterByIdMain()">
+            <input id="searchByName" type="text" class="form-control" placeholder="Search by name...">
+            <button class="btn btn-outline-secondary" id="basic-addon2" onclick="changePageAndSearch()">
               <img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png" />
             </button>
           </div>
@@ -40,152 +40,172 @@
 
     <!-- anchor -->
     <div class="container">
-      <a id="anchor" href="#popHeroes"><img id="anchorImg" src="https://i.giphy.com/media/JmIrb7d6XH4B94cX6W/giphy.webp"
-          alt="V"></a>
+      <a id="anchor" href="#replaceNameSeparator"><img id="anchorImg"
+          src="https://i.giphy.com/media/JmIrb7d6XH4B94cX6W/giphy.webp" alt="V"></a>
     </div>
     <!-- fim anchor -->
 
     <div class="row adjust-pd">
       <!-- ########################### HERÓIS ############################################################ -->
-      <div class="col-12 mt-5 mb-5">
-        <div class="title-group">
-          <span id="popHeroes">Popular Heroes</span>
+
+      <div class="title-heroes">
+        <div id="separator" class="d-flex align-items-center justify-content-center mt-5">
+          <div id="lineName" class="d-flex justify-content-end">
+            <div style="width: 80%;">
+              <h5 id="replaceNameSeparator" class="title-heroes" style="text-align: center;">Popular Heroes</h5>
+            </div>
+          </div>
+          <div id="line1box" class="d-flex justify-content-start">
+            <img id="line1" src="./assets/img/line.png">
+          </div>
         </div>
+
       </div>
-
-      <!-- CARROSSEL DE HERÓIS INÍCIO -->
-      <div class="col-12">
-        <div class="wrapper">
-          <section id="section1" class="d-flex align-items-end justify-content-evenly">
-            <a href="#section2" class="arrow__btn"><span>‹</span></a>
-            <div class="item">
-
-              <img style="cursor: pointer" onclick="changePage(1009220)" src="assets/img/capitao-america.png"
-                alt="Capitão América" title="Capitão América">
-
-            </div>
-            <div class="item">
-
-              <img style="cursor: pointer" onclick="changePage(1009610)" src="assets/img/homem-aranha.png"
-                alt="Homem Aranha" title="Homem Aranha">
-
-            </div>
-            <div class="item">
-
-              <img style="cursor: pointer" onclick="changePage(1009368)" src="assets/img/homem-de-ferro.png"
-                alt="Homem de Ferro" title="Homem de Ferro">
-
-            </div>
-            <div class="item">
-
-              <img style="cursor: pointer" onclick="changePage(1009189)" src="assets/img/viuva-negra.png"
-                alt="Viúva Negra" title="Viúva Negra">
-
-            </div>
-            <a href="#section2" class="arrow__btn"><span>›</span></a>
-          </section>
-          <section id="section2" class="d-flex align-items-end justify-content-evenly">
-            <a href="#section1" class="arrow__btn"><span>‹</span></a>
-            <div class="item">
-
-              <img style="cursor: pointer" onclick="changePage(1009562)" src="assets/img/feiticeira.png"
-                alt="Feiticeira Escarlate" title="Feiticeira Escarlate">
-
-            </div>
-            <div class="item">
-
-              <img style="cursor: pointer" onclick="changePage(1009664)" src="assets/img/thor.png" alt="Thor"
-                title="Thor">
-
-            </div>
-            <div class="item">
-
-              <img style="cursor: pointer" onclick="changePage(1009351)" src="assets/img/hulk.png" alt="Hulk"
-                title="Hulk">
-
-            </div>
-            <a href="#section1" class="arrow__btn"><span>›</span></a>
-          </section>
-        </div>
-      </div>
-      <!-- CARROSSEL DE HERÓIS FINAL -->
-
-
-
-      <!-- ########################### VILÕES ############################################################ -->
-      <div class="col-12 mt-5 mb-5">
-        <span class="title-group">
-          Popular Villains
-        </span>
-      </div>
-
-      <!-- CARROSSEL DE VILÕES INÍCIO -->
-      <div class="col-12">
-        <div class="wrapper">
-          <section id="section4" class="d-flex align-items-end justify-content-evenly">
-            <a href="#section6" class="arrow__btn"><span>‹</span></a>
-            <div class="item">
-
-              <img onclick="changePage(1009407)" style="cursor:pointer" src="assets/img/loki.png" alt="Loki"
-                title="Loki">
-
-            </div>
-            <div class="item">
-
-              <img onclick="changePage(1009652)" style="cursor:pointer" src="assets/img/thanos.png" alt="Thanos"
-                title="Thanos">
-
-            </div>
-            <div class="item">
-
-              <img onclick="changePage(1009685)" style="cursor:pointer" src="assets/img/ultron.png" alt="Ultron"
-                title="Ultron">
-
-            </div>
-            <div class="item">
-
-              <img onclick="changePage(1009156)" style="cursor:pointer" src="assets/img/galactus.png" alt="Galactus"
-                title="Galactus">
-
-            </div>
-            <a href="#section6" class="arrow__btn"><span>›</span></a>
-          </section>
-          <section id="section6" class="d-flex align-items-end justify-content-evenly">
-            <a href="#section4" class="arrow__btn"><span>‹</span></a>
-            <div class="item">
-
-              <img onclick="changePage(1011482)" style="cursor:pointer" src="assets/img/hela.png" alt="Hela"
-                title="Hela">
-
-            </div>
-            <div class="item">
-
-              <img onclick="changePage(1009417)" style="cursor:pointer" src="assets/img/magneto.png" alt="Magneto"
-                title="Magneto">
-
-            </div>
-            <div class="item">
-
-              <img onclick="changePage(1009663)" style="cursor:pointer" src="assets/img/venom.png" alt="Venom"
-                title="Venom">
-
-            </div>
-            <div class="item">
-
-              <img onclick="changePage(1009389)" style="cursor:pointer" src="assets/img/senhor-do-crime.png"
-                alt="Senhor do Crime" title="Senhor do Crime">
-
-            </div>
-            <a href="#section4" class="arrow__btn"><span>›</span></a>
-          </section>
-        </div>
-      </div>
-      <!-- CARROSSEL DE VILÕES FINAL -->
     </div>
 
-    <div id="copy" class="d-flex flex-column align-items-center mt-5 mb-3 text-center">
-      <a href="http://marvel.com" class="text-center">Data provided by Marvel. © 2021 MARVEL</a>
+
+    <!-- CARROSSEL DE HERÓIS INÍCIO -->
+    <div class="col-12 mb-5">
+      <div class="wrapper">
+        <section id="section1" class="d-flex align-items-end justify-content-evenly">
+          <a href="#section2" class="arrow__btn"><span>‹</span></a>
+          <div class="item">
+
+            <img style="cursor: pointer" onclick="changePage(1009220)" src="assets/img/capitao-america.png"
+              alt="Capitão América" title="Capitão América">
+
+          </div>
+          <div class="item">
+
+            <img style="cursor: pointer" onclick="changePage(1009610)" src="assets/img/homem-aranha.png"
+              alt="Homem Aranha" title="Homem Aranha">
+
+          </div>
+          <div class="item">
+
+            <img style="cursor: pointer" onclick="changePage(1009368)" src="assets/img/homem-de-ferro.png"
+              alt="Homem de Ferro" title="Homem de Ferro">
+
+          </div>
+          <div class="item">
+
+            <img style="cursor: pointer" onclick="changePage(1009189)" src="assets/img/viuva-negra.png"
+              alt="Viúva Negra" title="Viúva Negra">
+
+          </div>
+          <a href="#section2" class="arrow__btn"><span>›</span></a>
+        </section>
+        <section id="section2" class="d-flex align-items-end justify-content-evenly">
+          <a href="#section1" class="arrow__btn"><span>‹</span></a>
+          <div class="item">
+
+            <img style="cursor: pointer" onclick="changePage(1009562)" src="assets/img/feiticeira.png"
+              alt="Feiticeira Escarlate" title="Feiticeira Escarlate">
+
+          </div>
+          <div class="item">
+
+            <img style="cursor: pointer" onclick="changePage(1009664)" src="assets/img/thor.png" alt="Thor"
+              title="Thor">
+
+          </div>
+          <div class="item">
+
+            <img style="cursor: pointer" onclick="changePage(1009351)" src="assets/img/hulk.png" alt="Hulk"
+              title="Hulk">
+
+          </div>
+          <a href="#section1" class="arrow__btn"><span>›</span></a>
+        </section>
+      </div>
     </div>
+    <!-- CARROSSEL DE HERÓIS FINAL -->
+
+
+
+    <!-- ########################### VILÕES ############################################################ -->
+    <div class="col-12 mt-5">
+      <div class="title-heroes row">
+        <div id="separator" class="d-flex align-items-center justify-content-center mt-5">
+          <div id="lineName" class="d-flex justify-content-end">
+            <div style="width: 80%;">
+              <h5 id="replaceNameSeparator" class="title-heroes" style="text-align: center;">Popular Vilains</h5>
+            </div>
+          </div>
+          <div id="line1box" class="d-flex justify-content-start">
+            <img id="line1" src="./assets/img/line.png">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CARROSSEL DE VILÕES INÍCIO -->
+  <div class="col-12">
+    <div class="wrapper">
+      <section id="section4" class="d-flex align-items-end justify-content-evenly">
+        <a href="#section6" class="arrow__btn"><span>‹</span></a>
+        <div class="item">
+
+          <img onclick="changePage(1009407)" style="cursor:pointer" src="assets/img/loki.png" alt="Loki" title="Loki">
+
+        </div>
+        <div class="item">
+
+          <img onclick="changePage(1009652)" style="cursor:pointer" src="assets/img/thanos.png" alt="Thanos"
+            title="Thanos">
+
+        </div>
+        <div class="item">
+
+          <img onclick="changePage(1009685)" style="cursor:pointer" src="assets/img/ultron.png" alt="Ultron"
+            title="Ultron">
+
+        </div>
+        <div class="item">
+
+          <img onclick="changePage(1009156)" style="cursor:pointer" src="assets/img/galactus.png" alt="Galactus"
+            title="Galactus">
+
+        </div>
+        <a href="#section6" class="arrow__btn"><span>›</span></a>
+      </section>
+      <section id="section6" class="d-flex align-items-end justify-content-evenly">
+        <a href="#section4" class="arrow__btn"><span>‹</span></a>
+        <div class="item">
+
+          <img onclick="changePage(1011482)" style="cursor:pointer" src="assets/img/hela.png" alt="Hela" title="Hela">
+
+        </div>
+        <div class="item">
+
+          <img onclick="changePage(1009417)" style="cursor:pointer" src="assets/img/magneto.png" alt="Magneto"
+            title="Magneto">
+
+        </div>
+        <div class="item">
+
+          <img onclick="changePage(1009663)" style="cursor:pointer" src="assets/img/venom.png" alt="Venom"
+            title="Venom">
+
+        </div>
+        <div class="item">
+
+          <img onclick="changePage(1009389)" style="cursor:pointer" src="assets/img/senhor-do-crime.png"
+            alt="Senhor do Crime" title="Senhor do Crime">
+
+        </div>
+        <a href="#section4" class="arrow__btn"><span>›</span></a>
+      </section>
+    </div>
+  </div>
+  <!-- CARROSSEL DE VILÕES FINAL -->
+  </div>
+
+  <div id="copy" class="d-flex flex-column align-items-center mt-5 mb-3 text-center">
+    <a href="http://marvel.com" class="text-center">Data provided by Marvel. © 2021 MARVEL</a>
+  </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

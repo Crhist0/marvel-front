@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+
+body {
+    background-color: black;
+}
+
+#logo {
+    width: 160px;
+}
+
+#searchInput {
+    width: 450px;
+}
+
+.btn-outline-secondary {
+    background-color: #ffffff;
+    color: #ced4da;
+    border-color: #ced4da;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #ffffff;
+    border-color: #ced4da;
+}
+
+.btn-outline-secondary:focus {
+    box-shadow: 0 0 2rem 0.25rem #adb5bd;
+}
+
+.btn {
+    margin-left: -50px;
+    border-radius: 00px 300px 300px 00px;
+    border-left: none;
+}
+
+.form-control {
+    border-radius: 300px;
+    border-right: none;
+}
+
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #adb5bd;
+    outline: 0;
+    box-shadow: 0 0 2rem 0.25rem #adb5bd;
+}
+
+#results {
+    height: 40rem;
+    background-image: url(./assets/img/image.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: initial;
+}
+
+#fade {
+    height: 140px;
+    margin-top: -272px;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 21.35%, #000000 100%);
+}
+
+#fadeContainer {
+    position: absolute;
+    top: 773px;
+    width: 100%;
+}
+
+#imgTopResults {
+    height: 550px;
+    width: 550px;
+    /* background-color: black; */
+    border-radius: 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* #topResults {
+    width: 100vw;
+} */
+
+#contentTopResults {
+    color: white;
+    max-width: 55vw;
+    max-height: 55vh;
+    overflow: auto;
+}
+
+#contentTopResultsInside {
+    width: 80%;
+}
+
+/* #separator {
+    width: 100vw;
+} */
+
+#line1 {
+    width: 80%;
+    height: 3px;
+}
+
+#line1box {
+    width: 55vw;
+}
+
+#lineName {
+    width: 30vw;
+}
+
+.title-heroes {
+    text-transform: uppercase;
+    font-family: Roboto;
+    font-size: 1.5rem;
+    letter-spacing: 0.6em;
+    color: #b1b1b1;
+}
+
+#comic {
+    padding: 0px 51px;
+}
+
+#replaceThumbnailResults {
+    border-radius: 40px;
+    -webkit-box-shadow: 10px 14px 30px 3px rgba(0, 0, 0, 0.62);
+    display: none;
+    width: 80%;
+    height: fit-content;
+}
+
+.scrollable-element {
+    scrollbar-width: thin;
+}
+
+#comicsList {
+    padding-left: 0px;
+}
+
+.text-center {
+    text-decoration: none;
+    color: white;
+}
+
+.text-center:hover {
+    text-decoration: none;
+    color: #ed1d24;
+}
+
+.paginationColor {
+    color: black;
+}
+
+.paginationColor:hover {
+    color: #ed1d24;
+}

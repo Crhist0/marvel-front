@@ -104,6 +104,10 @@ body {
     padding: 0px;
 }
 
+.card {
+    background-color: unset;
+}
+
 #anchor {
     text-decoration: none;
     color: white;
@@ -119,4 +123,42 @@ body {
 #anchorImg {
     width: 50px;
     height: 50px;
+}
+
+/* separator */
+#contentTopResults {
+    color: white;
+    max-width: 55vw;
+    max-height: 55vh;
+    overflow: auto;
+}
+#lineName {
+    width: 30vw;
+}
+#line1box {
+    width: 65vw;
+}
+#line1 {
+    width: 70%;
+    height: 3px;
+}
+.title-heroes {
+    text-transform: uppercase;
+    /* font-family: Roboto; */
+    font-weight: bold;
+    font-size: 1.5rem;
+    letter-spacing: 0.6em;
+    color: #b1b1b1;
+}
+/* fim separator */
+
+.paginationColor {
+    color: black;
+}
+
+.paginationColor:hover {
+    color: #ed1d24;
+}
+.card-text:hover {
+    color: #ed1d24;
 }

@@ -4,21 +4,55 @@ const api = axios.create({
 
 const params = new URLSearchParams(window.location.search);
 
-function listaPersonagens() {
-    let page = params.has("page") ? params.get("page") : "1";
+function searchInSearchResultsPage() {
     let name = document.getElementById("searchByName").value;
+    document.getElementById("getSearchName").innerText = name;
+    listaPersonagens(name);
+}
+
+function listaPersonagens(name, limit) {
+    let pageC = document.getElementById("pageCounter").innerText;
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    // let page = urlParams.has("page") ? params.get("page") : "1";
+    let url = urlParams.has("name");
+    console.log(`
+    url tem name? = ${url}`);
+    if (url) {
+        name = params.get("name");
+        console.log(`
+        name dentro do if: ${name}`);
+        params.delete("name");
+        name == null ? (name = document.getElementById("getSearchName").innerText) : (name = name);
+        console.log(`
+        name dentro do if depois de ver se é nulo: ${name}`);
+    } else {
+        name = document.getElementById("searchByName").value;
+        console.log(`
+        name dentro do else: ${name}`);
+    }
+    console.log(`
+Nome antes da chamada da api
+name: ${name}
+`);
+    // let page = Number(document.getElementById("pageCounter").innerText);
+    limit = 15;
     api.get("/", {
-        params: { page, name },
+        params: { page: pageC, name, limit },
     })
         .then((result) => {
-            console.log(result.data);
+            // console.log(result.data);
 
             const lista = result.data.data; // test page
+            const searchResultQuantity = result.data.data2; // test page
+            console.log(result);
             const searchResults = result.data.searchResults;
             const detailsPageResults = result.data.detailsPageResults;
             const copy = result.data.copy; // mensagem do final da pagina
+            console.log(lista);
 
-            atualizaTabela("#searchCaracter", lista, detailsPageResults);
+            atualizaTabela("#searchCaracter", lista, searchResultQuantity, detailsPageResults, name);
         })
         .catch((err) => {
             console.log("erro?");
@@ -31,13 +65,13 @@ function listaPersonagens() {
 // function changePage(num) {
 //   window.location.href = `http://127.0.0.1:5501/public/searchResults.html?page=${num}`; // trocar para o link do heroku
 // }
-function atualizaTabela(id, lista, detailsPageResults) {
+function atualizaTabela(id, lista, searchResultQuantity, detailsPageResults, name) {
     let list = document.querySelector(id);
     list.style.display = "block";
     //   const tbodyLista = document.querySelector("#searchCaracter > div");
-    console.log(detailsPageResults);
+    // console.log(detailsPageResults);
     list.innerHTML = "";
-
+    // console.log(lista);
     for (const personagem of lista) {
         let thumb = personagem.thumbnail;
         // link para página de detalhes, em geral é a mesma que a comiclink page
@@ -60,11 +94,11 @@ function atualizaTabela(id, lista, detailsPageResults) {
         <div class="item m-4">
             <div class="card clickHere d-flex justify-content-center" style="width: 15rem; ">
                 
-                    <img   src="${thumb}" class="card-img-top" alt="${personagem.name}" style="height: 15rem">
+                    <img id="test1"  src="${thumb}" class="card-img-top" alt="${personagem.name}" style="height: 15rem;border-radius: 40px;">
                 
                     <div class="card-body d-flex align-items-center justify-content-center scrollable-element opacity_0_1" style="overflow: auto;" >
                         <a href="http://127.0.0.1:5501/public/results.html?id=${personagem.id}" > 
-                            <p class="card-text" style="text-align:center" >
+                            <p class="card-text" style="text-align:center;font-weight:normal;font-size:0.8rem;letter-spacing:2px" >
                             <!-- <strong>ID:</strong> ${personagem.id}<br>  -->
                             <strong>Name:</strong> ${personagem.name}<br>
                            Comics: ${personagem.comics}<br>
@@ -76,8 +110,102 @@ function atualizaTabela(id, lista, detailsPageResults) {
             </div>
         </div>`;
     }
+    document.getElementById("replaceNameSeparator").innerHTML = `${searchResultQuantity} Results for 
+    "<span id="getSearchName">${name}</span>"`;
+    document.getElementById("replaceNameSeparator").value = Math.ceil(searchResultQuantity / 15);
+    window.location.assign("#replaceNameSeparator");
 
+    let page = Number(document.getElementById("pageCounter").innerText);
+    console.log(`Page: ${page}`);
+    console.log(`quantidade de resultados: ${searchResultQuantity}`);
+    let pageQuantity = Math.ceil(searchResultQuantity / 15);
+    console.log(`Page quantity: ${pageQuantity}`);
+
+    // console.log(`counter: ${counter}`);
+    if (page <= 1) {
+        document.getElementById("liBefore").style.display = "none";
+    } else if (page > 1) {
+        document.getElementById("liBefore").style.display = "block";
+    }
+    if (pageQuantity <= 1) {
+        document.getElementById("liAfter").style.display = "none";
+        document.getElementById("page-item1").style.display = "none";
+    } else if (pageQuantity > 1) {
+        document.getElementById("liAfter").style.display = "block";
+        document.getElementById("page-item1").style.display = "block";
+    }
+    if (page >= pageQuantity) {
+        document.getElementById("liAfter").style.display = "none";
+    }
     // console.log(searchResults);
 
     //   document.getElementById("footer").innerHTML = copy;
 }
+
+function showResultsIfSearched() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const name = urlParams.get("name");
+    urlParams.has("name") ? listaPersonagens(name) : console.log("how did you get in here?");
+}
+
+function changePageAfterBefore(x) {
+    let page = Number(document.getElementById("pageCounter").innerText);
+    console.log("pag era: " + page);
+    page = page + x;
+    console.log("agora pag é: " + page);
+    document.getElementById("pageCounter").innerText = page;
+    let pageQuantity = document.getElementById("replaceNameSeparator").value;
+    console.log("pageQuantity: " + pageQuantity);
+    if (page <= 1) {
+        document.getElementById("liBefore").style.display = "none";
+    } else if (page > 1) {
+        document.getElementById("liBefore").style.display = "block";
+    }
+    if (pageQuantity <= 1) {
+        document.getElementById("liAfter").style.display = "none";
+        document.getElementById("page-item1").style.display = "none";
+    } else if (pageQuantity > 1) {
+        document.getElementById("liAfter").style.display = "block";
+        document.getElementById("page-item1").style.display = "block";
+    }
+    if (page >= pageQuantity) {
+        document.getElementById("liAfter").style.display = "none";
+    }
+    console.log(page);
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const id = urlParams.get("id");
+
+    let limit = page * 15;
+    let name = document.getElementById("getSearchName").innerText;
+    console.log(`
+    Antes de listar
+    limit: ${limit}
+    name: ${name}
+    `);
+    listaPersonagens(name, limit);
+}
+
+// api.get("/", {
+//   params: { page, limit, name },
+// })
+//   .then((result) => {
+//       // console.log(result.data);
+
+//       const lista = result.data.data; // test page
+//       const pageCount = result.data.data2; // test page
+//       console.log(result);
+//       const searchResults = result.data.searchResults;
+//       const detailsPageResults = result.data.detailsPageResults;
+//       const copy = result.data.copy; // mensagem do final da pagina
+
+//       atualizaTabela("#searchCaracter", lista, pageCount, detailsPageResults);
+//   })
+//   .catch((err) => {
+//       console.log("erro?");
+//       console.log(err);
+//       console.log(err.request);
+//       console.log(err.result);
+//   });

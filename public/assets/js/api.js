@@ -6,8 +6,8 @@ const params = new URLSearchParams(window.location.search);
 
 let page = params.has("page") ? params.get("page") : "1";
 
-function listaPersonagens() {
-    let name = document.getElementById("searchByName").value;
+function listaPersonagens(name) {
+    name ? name : document.getElementById("searchByName").value;
     api.get("/", {
         params: { page, name },
     })
@@ -195,7 +195,7 @@ function searchCharacterComicsById(id, page) {
             }
             let page = Number(document.getElementById("pageCounter").innerText);
             console.log(`Page: ${page}`);
-            let pageQuantity = (Number(document.getElementById("comicsQuantity").innerText) / 10).toFixed(0);
+            let pageQuantity = Math.ceil(Number(document.getElementById("comicsQuantity").innerText) / 10);
             console.log(`Page quantity${pageQuantity}`);
             if (page <= 1) {
                 document.getElementById("liBefore").style.display = "none";
@@ -267,6 +267,10 @@ function printHero() {
 }
 function changePage(id) {
     window.location.assign(`http://127.0.0.1:5501/public/results.html?id=${id}`); // trocar para o link do heroku
+}
+function changePageAndSearch() {
+    let name = document.getElementById("searchByName").value;
+    window.location.assign(`http://127.0.0.1:5501/public/searchresults.html?name=${name}`); // trocar para o link do heroku
 }
 
 function searchCharacterByIdMain() {

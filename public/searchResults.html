@@ -1,82 +1,114 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Marvel</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/searchCarousel.css" />
-  </head>
 
-  <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12 mb-4">
-          <div id="search" class="d-flex flex-column align-items-center">
-            <a href="./main.html">
-              <img
-                id="logo"
-                width="250px"
-                src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Marvel_Logo.svg"
-                alt="Nome da aplicação"
-              />
-            </a>
-            <div id="searchInput" class="input-group mb-3 mt-3">
-              <input
-                id="searchByName"
-                type="text"
-                class="form-control"
-                placeholder="Search by name..."
-                aria-label="Recipient's username"
-                aria-describedby="basic-addon2"
-              />
-              <button
-                class="btn btn-outline-secondary"
-                id="basic-addon2"
-                onclick="listaPersonagens()"
-              >
-                <img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png" />
-              </button>
-            </div>
-          </div>
-          <div class="d-flex flex-column align-items-center" id="fade">
-            <!-- efeito de transparencia -->
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marvel</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/searchCarousel.css" />
+</head>
+
+<body onload="showResultsIfSearched()">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 mb-4">
+        <div id="search" class="d-flex flex-column align-items-center">
+          <a class="mb-5" href="./main.html">
+            <img id="logo" width="250px" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Marvel_Logo.svg"
+              alt="Nome da aplicação" />
+          </a>
+          <div id="searchInput" class="input-group mb-3 mt-5">
+            <input id="searchByName" type="text" class="form-control" placeholder="Search by name..."
+              aria-label="Recipient's username" aria-describedby="basic-addon2" />
+            <button class="btn btn-outline-secondary" id="basic-addon2" onclick="searchInSearchResultsPage()">
+              <img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png" />
+            </button>
           </div>
         </div>
+        <div class="d-flex flex-column align-items-center" id="fade">
+          <!-- efeito de transparencia -->
+        </div>
+      </div>
 
-        <div class="col-12 mb-4">
-          <div class="title-heroes">
-            <h5>SEARCH RESULTS</h5>
-            <img class="line1" src="./assets/img/Line 1.png" alt="" />
-            <div class="mt-3 d-flex justify-content-center">
-              <div class="col-12" style="max-width: 85vw">
-                <div id="characterAll" class="wrapper">
-                  <section
-                    id="searchCaracter"
-                    class="d-flex flex-row flex-wrap align-items-center justify-content-center"
-                  ></section>
-                </div>
-              </div>
+
+      <div class="title-heroes">
+        <div id="separator" class="d-flex align-items-center justify-content-center mt-5">
+          <div id="lineName" class="d-flex justify-content-end">
+            <div style="width: 80%;">
+              <h5 id="replaceNameSeparator" class="title-heroes" style="text-align: center;">Results</h5>
+            </div>
+          </div>
+          <div id="line1box" class="d-flex justify-content-start">
+            <img id="line1" src="./assets/img/line.png">
+          </div>
+        </div>
+        <div class=" d-flex justify-content-center">
+          <div class="col-12" style="max-width: 85vw">
+            <div id="characterAll" class="wrapper">
+              <section id="searchCaracter" class="d-flex flex-row flex-wrap align-items-center justify-content-center">
+              </section>
             </div>
           </div>
         </div>
       </div>
+
+      <div id="pagination" class="container-fluid">
+
+        <div class="d-flex flex-column align-items-center">
+
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li id="liBefore" style="display: none;" class="page-item">
+                <a href="#replaceNameSeparator" onclick="changePageAfterBefore(-1)" id="page-itemB" class="page-link"
+                  style="cursor: pointer;" aria-label="Previous">
+                  <span class="paginationColor" aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li id="page-item1" style="display: none;" class="page-item" value="1"><a href="#replaceNameSeparator"
+                  id="pageCounter" class="page-link paginationColor" style="cursor: pointer;">1</a>
+              </li>
+              <li id="liAfter" style="display: none;" class="page-item">
+                <a href="#replaceNameSeparator" onclick="changePageAfterBefore(1)" id="page-itemA" class="page-link"
+                  style="cursor: pointer;" aria-label="Next">
+                  <span class="paginationColor" aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <div id="copy" class="d-flex flex-column align-items-center mt-5 mb-3 text-center">
+          <a href="http://marvel.com" class="text-center">Data provided by Marvel. © 2021 MARVEL</a>
+        </div>
+
+      </div>
+
+
     </div>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./assets/js/apiSearch.js"></script>
-  </body>
+    <!-- anchor -->
+    <div class="container">
+      <a id="anchor" href="#replaceNameSeparator"><img id="anchorImg"
+          src="https://i.giphy.com/media/JmIrb7d6XH4B94cX6W/giphy.webp" alt="V"></a>
+    </div>
+    <!-- fim anchor -->
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./assets/js/apiSearch.js"></script>
+</body>
+
 </html>

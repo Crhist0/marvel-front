@@ -39,11 +39,11 @@ div a {
     text-decoration: none;
     color: #fff;
 }
-div a:active,
+/* div a:active,
 div a:visited,
 div a:hover {
     color: #fff;
-}
+} */
 
 .scrollable-element {
     scrollbar-width: thin;

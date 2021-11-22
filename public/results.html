@@ -8,171 +8,7 @@
     <title>Marvel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
-
-        body {
-            background-color: black;
-        }
-
-        #logo {
-            width: 160px;
-
-        }
-
-        #searchInput {
-            width: 450px;
-
-        }
-
-        .btn-outline-secondary {
-            background-color: #FFFFFF;
-            color: #CED4DA;
-            border-color: #CED4DA
-        }
-
-        .btn-outline-secondary:hover {
-            background-color: #FFFFFF;
-            border-color: #CED4DA
-        }
-
-        .btn-outline-secondary:focus {
-            box-shadow: 0 0 2rem .25rem #ADB5BD
-        }
-
-        .btn {
-            margin-left: -50px;
-            border-radius: 00px 300px 300px 00px;
-            border-left: none
-        }
-
-
-        .form-control {
-            border-radius: 300px;
-            border-right: none
-        }
-
-        .form-control:focus {
-            color: #212529;
-            background-color: #fff;
-            border-color: #ADB5BD;
-            outline: 0;
-            box-shadow: 0 0 2rem .25rem #ADB5BD;
-        }
-
-        #results {
-            height: 40rem;
-            background-image: url(./assets/img/image.jpg);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-attachment: initial;
-        }
-
-        #fade {
-            height: 140px;
-            margin-top: -272px;
-            width: 100%;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 21.35%, #000000 100%);
-        }
-
-        #fadeContainer {
-            position: absolute;
-            top: 773px;
-            width: 100%;
-        }
-
-        #imgTopResults {
-
-            height: 550px;
-            width: 550px;
-            /* background-color: black; */
-            border-radius: 40px;
-            display: flex;
-            justify-content: flex-end;
-
-        }
-
-        /* #topResults {
-            width: 100vw;
-        } */
-
-        #contentTopResults {
-            color: white;
-            max-width: 55vw;
-            max-height: 55vh;
-            overflow: auto;
-        }
-
-        #contentTopResultsInside {
-            width: 80%;
-        }
-
-        /* #separator {
-            width: 100vw;
-        } */
-
-        #line1 {
-            width: 70%;
-            height: 3px;
-        }
-
-        #line1box {
-            width: 65vw
-        }
-
-        #lineName {
-            width: 30vw;
-
-        }
-
-        .title-heroes {
-            text-transform: uppercase;
-            font-family: Roboto;
-            font-size: 1.5rem;
-            letter-spacing: 0.6em;
-            color: #b1b1b1;
-
-        }
-
-        #comic {
-            padding: 0px 51px;
-        }
-
-        #replaceThumbnailResults {
-            border-radius: 40px;
-            -webkit-box-shadow: 10px 14px 30px 3px rgba(0, 0, 0, 0.62);
-            display: none;
-            width: 80%;
-            height: fit-content;
-        }
-
-
-        .scrollable-element {
-            scrollbar-width: thin;
-        }
-
-        #comicsList {
-            padding-left: 0px;
-        }
-
-        .text-center {
-            text-decoration: none;
-            color: white;
-        }
-
-        .text-center:hover {
-            text-decoration: none;
-            color: #ED1D24;
-        }
-
-        .paginationColor {
-            color: black;
-        }
-
-        .paginationColor:hover {
-            color: #ED1D24;
-        }
-    </style>
+    <link rel="stylesheet" href="./assets/css/results.css">
 </head>
 
 </div>
@@ -188,8 +24,8 @@
                         alt="Nome da aplicação">
                 </a>
                 <div id="searchInput" class="input-group">
-                    <input id="searchByName" type="text" class="form-control" placeholder="Search by id...">
-                    <button class="btn btn-outline-secondary" id="basic-addon2" onclick="searchCharacterById()"><img
+                    <input id="searchByName" type="text" class="form-control" placeholder="Search by name...">
+                    <button class="btn btn-outline-secondary" id="basic-addon2" onclick="changePageAndSearch()"><img
                             src="https://img.icons8.com/material-outlined/24/000000/search--v1.png" /></button>
                 </div>
 
@@ -200,7 +36,8 @@
             <div id="separator" class="d-flex align-items-center justify-content-center mt-5">
                 <div id="lineName" class="d-flex justify-content-end">
                     <div style="width: 80%;">
-                        <h5 id="replaceNameSeparator" class="title-heroes" style="text-align: center;">Hero name</h5>
+                        <h5 id="replaceNameSeparator" class="title-heroes" style="margin-left: 4vw;">
+                            Hero name</h5>
                     </div>
                 </div>
                 <div id="line1box" class="d-flex justify-content-start">
@@ -271,8 +108,8 @@
                                 </a>
                             </li>
                             <li id="page-item1" style="display: none;" class="page-item" value="1"><a
-                                    href="#titleComics" id="pageCounter" onclick="searchCharacterComicsById(1)"
-                                    class="page-link paginationColor" style="cursor: pointer;">1</a>
+                                    href="#titleComics" id="pageCounter" class="page-link paginationColor"
+                                    style="cursor: pointer;">1</a>
                             </li>
                             <li id="liAfter" style="display: none;" class="page-item">
                                 <a href="#titleComics" onclick="changePageAfterBefore(1)" id="page-itemA"
