@@ -74,12 +74,6 @@ function atualizaTabela(lista, copy, searchResults, detailsPageResults) {
     document.getElementById("footer").innerHTML = copy;
 }
 
-// function searchButton() {
-//     let x = document.getElementById("searchByName").value;
-//     window.location.assign("/public/results.html"); // aqui gostaria que trocasse de página e continuasse a executar a função mas não consegui ainda rs
-//     searchCharacterById(x);
-// }
-
 function searchCharacterById() {
     let id = document.getElementById("searchByName").value;
 
@@ -117,7 +111,7 @@ function changePageAfterBefore(x) {
     let page = Number(document.getElementById("pageCounter").innerText);
     page = page + x;
     let pageQuantity = parseInt(Number(document.getElementById("comicsQuantity").innerText) / 10);
-    console.log(pageQuantity);
+    // console.log(pageQuantity);
     if (page <= 1) {
         document.getElementById("liBefore").style.display = "none";
     } else if (page > 1) {
@@ -130,7 +124,7 @@ function changePageAfterBefore(x) {
         document.getElementById("liAfter").style.display = "block";
         document.getElementById("page-item1").style.display = "block";
     }
-    console.log(page);
+    // console.log(page);
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const id = urlParams.get("id");
@@ -194,9 +188,9 @@ function searchCharacterComicsById(id, page) {
                 x++;
             }
             let page = Number(document.getElementById("pageCounter").innerText);
-            console.log(`Page: ${page}`);
+            // console.log(`Page: ${page}`);
             let pageQuantity = Math.ceil(Number(document.getElementById("comicsQuantity").innerText) / 10);
-            console.log(`Page quantity${pageQuantity}`);
+            // console.log(`Page quantity${pageQuantity}`);
             if (page <= 1) {
                 document.getElementById("liBefore").style.display = "none";
             } else if (page > 1) {
@@ -278,13 +272,10 @@ function searchCharacterByIdMain() {
     changePage(id);
 }
 
-// comicCard.addEventListener("mouseover", showInfo, false);
-// comicCard.addEventListener("mouseout", hideInfo, false);
-
-// function showInfo(x) {
-//     document.getElementById(`comicsResultImage${x}`).style.display = `none`;
-// }
-
-// function hideInfo(x) {
-//     document.getElementById(`comicsResultImage${x}`).style.display = `block`;
-// }
+var input = document.getElementById("searchByName");
+input.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("basic-addon2").click();
+    }
+});

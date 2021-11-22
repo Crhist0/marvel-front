@@ -62,9 +62,6 @@ name: ${name}
         });
 }
 
-// function changePage(num) {
-//   window.location.href = `http://127.0.0.1:5501/public/searchResults.html?page=${num}`; // trocar para o link do heroku
-// }
 function atualizaTabela(id, lista, searchResultQuantity, detailsPageResults, name) {
     let list = document.querySelector(id);
     list.style.display = "block";
@@ -188,24 +185,10 @@ function changePageAfterBefore(x) {
     listaPersonagens(name, limit);
 }
 
-// api.get("/", {
-//   params: { page, limit, name },
-// })
-//   .then((result) => {
-//       // console.log(result.data);
-
-//       const lista = result.data.data; // test page
-//       const pageCount = result.data.data2; // test page
-//       console.log(result);
-//       const searchResults = result.data.searchResults;
-//       const detailsPageResults = result.data.detailsPageResults;
-//       const copy = result.data.copy; // mensagem do final da pagina
-
-//       atualizaTabela("#searchCaracter", lista, pageCount, detailsPageResults);
-//   })
-//   .catch((err) => {
-//       console.log("erro?");
-//       console.log(err);
-//       console.log(err.request);
-//       console.log(err.result);
-//   });
+var input = document.getElementById("searchByName");
+input.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("basic-addon2").click();
+    }
+});
