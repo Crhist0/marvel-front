@@ -94,7 +94,7 @@ function atualizaTabela(id, lista, searchResultQuantity, detailsPageResults, nam
                     <img id="test1"  src="${thumb}" class="card-img-top" alt="${personagem.name}" style="height: 15rem;border-radius: 40px;">
                 
                     <div class="card-body d-flex align-items-center justify-content-center scrollable-element opacity_0_1" style="overflow: auto;" >
-                        <a href="http://127.0.0.1:5501/public/results.html?id=${personagem.id}" > 
+                        <a href="https://api-frontend-marvel-crhist0.herokuapp.com/results.html?id=${personagem.id}" >  <!-- trocado link pelo do heroku!  -->
                             <p class="card-text" style="text-align:center;font-weight:normal;font-size:0.8rem;letter-spacing:2px" >
                             <!-- <strong>ID:</strong> ${personagem.id}<br>  -->
                             <strong>Name:</strong> ${personagem.name}<br>
