@@ -7,6 +7,7 @@ const params = new URLSearchParams(window.location.search);
 function searchInSearchResultsPage() {
     let name = document.getElementById("searchByName").value;
     document.getElementById("getSearchName").innerText = name;
+    document.getElementById("pageCounter").innerText = 1;
     listaPersonagens(name);
 }
 
