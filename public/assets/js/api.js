@@ -270,11 +270,11 @@ function printHero() {
         });
 }
 function changePage(id) {
-    window.location.assign(`http://127.0.0.1:5501/public/results.html?id=${id}`); // trocar para o link do heroku
+    window.location.assign(`https://api-frontend-marvel-crhist0.herokuapp.com/results.html?id=${id}`); // trocar para o link do heroku - feito!
 }
 function changePageAndSearch() {
     let name = document.getElementById("searchByName").value;
-    window.location.assign(`http://127.0.0.1:5501/public/searchresults.html?name=${name}`); // trocar para o link do heroku
+    window.location.assign(`https://api-frontend-marvel-crhist0.herokuapp.com/searchresults.html?name=${name}`); // trocar para o link do heroku - feito!
 }
 
 function searchCharacterByIdMain() {
