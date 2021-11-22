@@ -64,7 +64,7 @@ function atualizaTabela(id, lista, searchResultQuantity, detailsPageResults, nam
             // se for as imagens de "not found", mostra a logo marvel abaixo
             thumb = `https://i.ibb.co/vLhYShQ/Screenshot-1.png`;
         }
-        let showing = Number(document.getElementById("pageCounter").innerText) * 15;
+
         list.innerHTML += `
         <div class="item m-4">
             <div class="card clickHere d-flex justify-content-center" style="width: 15rem; ">
@@ -85,7 +85,7 @@ function atualizaTabela(id, lista, searchResultQuantity, detailsPageResults, nam
             </div>
         </div>`;
     }
-    document.getElementById("replaceNameSeparator").innerHTML = `${showing} of ${searchResultQuantity} Results for 
+    document.getElementById("replaceNameSeparator").innerHTML = `<span id="showingCount"></span> of ${searchResultQuantity} Results for 
     "<span id="getSearchName">${name}</span>"`;
     document.getElementById("replaceNameSeparator").value = Math.ceil(searchResultQuantity / 15);
     window.location.assign("#replaceNameSeparator");
@@ -108,6 +108,9 @@ function atualizaTabela(id, lista, searchResultQuantity, detailsPageResults, nam
     if (page >= pageQuantity) {
         document.getElementById("liAfter").style.display = "none";
     }
+
+    let showing = Number(document.getElementById("pageCounter").innerText) * 15;
+    document.getElementById("showingCount").innerText = showing;
 }
 
 function showResultsIfSearched() {
